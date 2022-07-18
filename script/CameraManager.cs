@@ -42,7 +42,7 @@ public class CameraManager : MonoBehaviour
         halfWidth = halfHeight * Screen.width / Screen.height;
 
         Vector3 startPos = (target_y.transform.position + target_p.transform.position)/ 2;
-        this.transform.position = new Vector3(startPos.x, startPos.y+2 , transform.position.z);
+        this.transform.position = new Vector3(startPos.x, startPos.y+2f , transform.position.z);
 
 
     }
@@ -58,7 +58,7 @@ public class CameraManager : MonoBehaviour
 
         if (target_y.gameObject != null && target_p.gameObject != null)
         {
-            targetPos.Set(targetPos.x, targetPos.y + 2, transform.position.z);
+            targetPos.Set(targetPos.x, targetPos.y + 4f, transform.position.z);
             this.transform.position = Vector3.Lerp(transform.position, targetPos, moveSpeed * Time.deltaTime);
         }
 

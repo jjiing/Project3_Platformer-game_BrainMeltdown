@@ -5,6 +5,9 @@ using UnityEngine;
 public abstract class Player : MonoBehaviour
 {
 
+    public ObjectPool objectPool;
+    public Transform footPos;
+    GameObject landingEffect;
 
     protected Rigidbody2D rigid2d;
     protected SpriteRenderer spriteRenderer;
@@ -21,6 +24,7 @@ public abstract class Player : MonoBehaviour
     protected bool isUp;
     public bool isDown;
     public bool isGrounded;
+    protected bool isDead;
 
     protected GameObject currentSavePoint;
     protected Vector3 currentSavePointPos;
@@ -35,6 +39,10 @@ public abstract class Player : MonoBehaviour
     protected Animator dieEffectAnim;
 
     protected Dictionary<string, Color> colorDic;
+
+    //protected GameObject landingEffect;
+    
+    
 
 
     public void Start()
@@ -51,8 +59,11 @@ public abstract class Player : MonoBehaviour
         dieEffectSR = dieEffect.GetComponent<SpriteRenderer>();
         dieEffectAnim = dieEffect.GetComponent<Animator>();
 
+        //landingEffect = transform.GetChild(2).gameObject;
+        
+
         speed = 8;
-        jumpForce = 20;
+        jumpForce = 17;
 
 
         isSit = false;
@@ -60,6 +71,7 @@ public abstract class Player : MonoBehaviour
         isUp = false;
         isDown = false;
         isGrounded = true;
+        isDead = false;
 
 
 
@@ -107,6 +119,7 @@ public abstract class Player : MonoBehaviour
 
         dieEffect.SetActive(true);
 
+
     }
 
 
@@ -114,12 +127,22 @@ public abstract class Player : MonoBehaviour
     {
         if (collision.gameObject.tag == "Obstacle")
         {
+            isDead = true;
             GameManager.Instance.GameOver();
-            DieEffect(); //≈ı∏Ì
+            DieEffect(); 
+
         }
         else if (collision.gameObject.tag == "Ground")
         {
             isGrounded = true;
+            if (!isDead)
+            {
+                GameObject landingEffect = objectPool.UsePrefab();
+                landingEffect.transform.position = footPos.position;
+                StartCoroutine(GetBackPrefabCo(landingEffect));
+            }
+
+
         }
     }
     
@@ -135,9 +158,16 @@ public abstract class Player : MonoBehaviour
     {
         if (collision.gameObject.tag == "Ground")
         {
-            isGrounded = false; 
+            isGrounded = false;
+           
         }
     }
+    IEnumerator GetBackPrefabCo(GameObject gameObject)
+    {
+        yield return new WaitForSeconds(0.6f);
+        objectPool.GetBackPrefab(gameObject);
+    }
+   
 
 
 

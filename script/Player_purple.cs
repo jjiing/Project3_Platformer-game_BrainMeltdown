@@ -35,6 +35,9 @@ public class Player_purple : Player
         rigid2d.velocity = new Vector2(moveX * speed, rigid2d.velocity.y);
         //x축 이동은 x*speed로 y축 이동은 기존의 속력값(현재는 중력)
 
+        //미끄러짐 방지
+        if (moveX == 0) rigid2d.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
+        else rigid2d.constraints = RigidbodyConstraints2D.FreezeRotation;
 
         //anim 좌우방향설정
         if (moveX < 0) spriteRenderer.flipX = false;

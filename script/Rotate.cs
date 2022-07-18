@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Rotate : MonoBehaviour
 {
-    float rotateSpeed;
+    public float rotateSpeed;
     private void Start()
     {
-        rotateSpeed = 50f;
+
     }
 
     private void Update()

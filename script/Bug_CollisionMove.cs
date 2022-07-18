@@ -7,10 +7,12 @@ public class Bug_CollisionMove : MonoBehaviour, IMoveCollision
 
     int changeDir;
     SpriteRenderer spriteRenderer;
+    Rigidbody2D rigid2d;
     private void Start()
     {
         changeDir = -1;
         spriteRenderer = GetComponent<SpriteRenderer>();
+        rigid2d = GetComponent<Rigidbody2D>();
     }
 
     private void Update()
@@ -25,10 +27,16 @@ public class Bug_CollisionMove : MonoBehaviour, IMoveCollision
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+
         if(collision.gameObject.tag =="Obstacle")
         {
             changeDir *= -1;
             ChangeFlipX();
+        }
+        if(collision.gameObject.tag =="Player")
+        {
+            rigid2d.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY
+                | RigidbodyConstraints2D.FreezeRotation;
         }
     }
     void ChangeFlipX()
@@ -36,4 +44,5 @@ public class Bug_CollisionMove : MonoBehaviour, IMoveCollision
         if (spriteRenderer.flipX) spriteRenderer.flipX = false;
         else spriteRenderer.flipX = true;
     }
+    
 }

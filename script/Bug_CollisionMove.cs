@@ -5,7 +5,7 @@ using UnityEngine;
 public class Bug_CollisionMove : MonoBehaviour, IMoveCollision
 {
 
-    int changeDir;
+    public int changeDir;
     SpriteRenderer spriteRenderer;
     Rigidbody2D rigid2d;
     private void Start()

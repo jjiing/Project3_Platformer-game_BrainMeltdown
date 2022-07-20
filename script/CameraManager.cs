@@ -7,7 +7,7 @@ public class CameraManager : MonoBehaviour
     public GameObject target_y;
     public GameObject target_p;
 
-
+    public float cameraPosPlus=4;
 
     private float moveSpeed; //카메라 속도
 
@@ -58,7 +58,7 @@ public class CameraManager : MonoBehaviour
 
         if (target_y.gameObject != null && target_p.gameObject != null)
         {
-            targetPos.Set(targetPos.x, targetPos.y + 4f, transform.position.z);
+            targetPos.Set(targetPos.x, targetPos.y + cameraPosPlus, transform.position.z);
             this.transform.position = Vector3.Lerp(transform.position, targetPos, moveSpeed * Time.deltaTime);
         }
 

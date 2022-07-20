@@ -129,7 +129,7 @@ public abstract class Player : MonoBehaviour
         {
             isDead = true;
             GameManager.Instance.GameOver();
-            DieEffect(); 
+            DieEffect();
 
         }
         else if (collision.gameObject.tag == "Ground")

@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{0C64DF77-5846-4403-0854-4A42FBCD6233}</ProjectGuid>
+    <ProjectGuid>{E45A893A-7907-3189-F674-92BA5A37669F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -57,28 +57,40 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\ObjectPool.cs" />
+    <Compile Include="Assets\ObjectOnOff.cs" />
     <Compile Include="Assets\IMovePingpong.cs" />
     <Compile Include="Assets\Player_yellow.cs" />
+    <Compile Include="Assets\blockFadeManage.cs" />
     <Compile Include="Assets\Rotate.cs" />
     <Compile Include="Assets\IAttackable.cs" />
+    <Compile Include="Assets\LandMoveUpStg2.cs" />
+    <Compile Include="Assets\RotateObstacle.cs" />
     <Compile Include="Assets\Singleton.cs" />
     <Compile Include="Assets\Bug_CollisionMove.cs" />
     <Compile Include="Assets\Player.cs" />
+    <Compile Include="Assets\IMoveRight.cs" />
     <Compile Include="Assets\Bug_AutoMove.cs" />
+    <Compile Include="Assets\IRotate.cs" />
     <Compile Include="Assets\LandMoveRight.cs" />
+    <Compile Include="Assets\ProjectiveObstacle.cs" />
+    <Compile Include="Assets\IProjective.cs" />
     <Compile Include="Assets\LandMoveRightChild.cs" />
     <Compile Include="Assets\LandUpByLever.cs" />
     <Compile Include="Assets\landingEffect.cs" />
+    <Compile Include="Assets\RandomPrefabOn.cs" />
     <Compile Include="Assets\Interface.cs" />
     <Compile Include="Assets\Player_purple.cs" />
+    <Compile Include="Assets\MonsterShooting.cs" />
     <Compile Include="Assets\savePoint.cs" />
+    <Compile Include="Assets\LandMoveStage2.cs" />
     <Compile Include="Assets\IMoveCollision.cs" />
     <Compile Include="Assets\GameManager.cs" />
     <Compile Include="Assets\CameraManager.cs" />
     <Compile Include="Assets\LandHalfPass.cs" />
     <Compile Include="Assets\Lever.cs" />
-    <Compile Include="Assets\IRotate.cs" />
-    <Compile Include="Assets\RotateObstacle.cs" />
+    <Compile Include="Assets\ObjectOnOffVer2.cs" />
+    <Compile Include="Assets\PlayerOnCheckChild.cs" />
+    <Compile Include="Assets\PlayerOnCheckParents.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

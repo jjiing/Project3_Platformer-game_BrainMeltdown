@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LandMoveRight : MonoBehaviour
+public class LandMoveRight : MonoBehaviour, IMoveRight
 {
     public bool isBothOn;
 
@@ -30,10 +30,14 @@ public class LandMoveRight : MonoBehaviour
         
         if (isBothOn)
         {
-            childLandA.SetLightOn(true);
-            childLandB.SetLightOn(true);
-            transform.Translate(new Vector3(moveSpeed*Time.deltaTime,0,0));
+            MoveRight();
         }
+    }
+    public void MoveRight()
+    {
+        childLandA.SetLightOn(true);
+        childLandB.SetLightOn(true);
+        transform.Translate(new Vector3(moveSpeed * Time.deltaTime, 0, 0));
     }
     public void CheckIsOn()
     {

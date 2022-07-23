@@ -127,6 +127,7 @@ public abstract class Player : MonoBehaviour
     {
         if (collision.gameObject.tag == "Obstacle")
         {
+            
             isDead = true;
             GameManager.Instance.GameOver();
             DieEffect();

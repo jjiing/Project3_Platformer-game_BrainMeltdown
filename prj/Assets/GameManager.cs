@@ -9,7 +9,7 @@ public class GameManager : Singleton<GameManager>
 
     public void Awake()
     {
-        savePointNow = 4;
+        savePointNow = 7;
         base.Awake();
 
     }

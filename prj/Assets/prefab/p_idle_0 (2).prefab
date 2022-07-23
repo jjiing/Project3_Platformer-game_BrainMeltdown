@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5222110822219334937}
   - component: {fileID: 9132747785519251656}
   - component: {fileID: 3943251009285428645}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: die_Effect_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -111,7 +111,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4403445431702705316}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: foot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -142,7 +142,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3422726617973350784}
   - component: {fileID: 2568712203594890756}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: sitCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -193,7 +193,7 @@ GameObject:
   - component: {fileID: 8117924257086744323}
   - component: {fileID: 5807694907109211300}
   - component: {fileID: 597913013}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: p_idle_0 (2)
   m_TagString: Player
   m_Icon: {fileID: 0}

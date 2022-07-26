@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{724FF824-45B0-16DD-2061-B495D8B689B6}</ProjectGuid>
+    <ProjectGuid>{FC390126-0092-79A3-551C-A232DD6EA484}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -56,27 +56,43 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\IMovePingpong.cs" />
-    <Compile Include="Assets\Player_yellow.cs" />
-    <Compile Include="Assets\Rotate.cs" />
-    <Compile Include="Assets\IAttackable.cs" />
-    <Compile Include="Assets\Singleton.cs" />
-    <Compile Include="Assets\Bug_CollisionMove.cs" />
-    <Compile Include="Assets\Player.cs" />
-    <Compile Include="Assets\Bug_AutoMove.cs" />
-    <Compile Include="Assets\LandMoveRight.cs" />
-    <Compile Include="Assets\LandMoveRightChild.cs" />
-    <Compile Include="Assets\LandUpByLever.cs" />
-    <Compile Include="Assets\landingEffect.cs" />
-    <Compile Include="Assets\Interface.cs" />
-    <Compile Include="Assets\Player_purple.cs" />
-    <Compile Include="Assets\savePoint.cs" />
-    <Compile Include="Assets\IMoveCollision.cs" />
-    <Compile Include="Assets\GameManager.cs" />
-    <Compile Include="Assets\CameraManager.cs" />
-    <Compile Include="Assets\LandHalfPass.cs" />
-    <Compile Include="Assets\Lever.cs" />
-    <Compile Include="Assets\ObjectPool.cs" />
+    <Compile Include="Assets\script\management\ObjectPool.cs" />
+    <Compile Include="Assets\script\stage2\ObjectOnOffVer2.cs" />
+    <Compile Include="Assets\script\stage2\ObjectOnOff.cs" />
+    <Compile Include="Assets\script\Interface\IMovePingpong.cs" />
+    <Compile Include="Assets\script\management\Player_yellow.cs" />
+    <Compile Include="Assets\script\stage2\blockFadeManage.cs" />
+    <Compile Include="Assets\script\stage1\Rotate.cs" />
+    <Compile Include="Assets\script\stage2\PlayerOnCheckChild.cs" />
+    <Compile Include="Assets\script\Interface\IAttackable.cs" />
+    <Compile Include="Assets\script\stage2\LandMoveUpStg2.cs" />
+    <Compile Include="Assets\script\stage2\RotateObstacle.cs" />
+    <Compile Include="Assets\script\management\Singleton.cs" />
+    <Compile Include="Assets\script\UI\IngameUI_stg1.cs" />
+    <Compile Include="Assets\script\Monster\Bug_CollisionMove.cs" />
+    <Compile Include="Assets\script\management\Player.cs" />
+    <Compile Include="Assets\script\management\clearPoint1.cs" />
+    <Compile Include="Assets\script\Interface\IMoveRight.cs" />
+    <Compile Include="Assets\script\Monster\Bug_AutoMove.cs" />
+    <Compile Include="Assets\script\Interface\IRotate.cs" />
+    <Compile Include="Assets\script\stage1\LandMoveRight.cs" />
+    <Compile Include="Assets\script\stage2\ProjectiveObstacle.cs" />
+    <Compile Include="Assets\script\stage2\Projective4ways.cs" />
+    <Compile Include="Assets\script\stage2\PlayerOnCheckParents.cs" />
+    <Compile Include="Assets\script\Interface\IProjective.cs" />
+    <Compile Include="Assets\script\stage1\LandMoveRightChild.cs" />
+    <Compile Include="Assets\script\stage1\LandUpByLever.cs" />
+    <Compile Include="Assets\script\stage2\RandomPrefabOn.cs" />
+    <Compile Include="Assets\script\management\Player_purple.cs" />
+    <Compile Include="Assets\script\Monster\MonsterShooting.cs" />
+    <Compile Include="Assets\script\management\savePoint.cs" />
+    <Compile Include="Assets\script\stage2\LandMoveStage2.cs" />
+    <Compile Include="Assets\script\Interface\IMoveCollision.cs" />
+    <Compile Include="Assets\script\management\GameManager.cs" />
+    <Compile Include="Assets\script\management\CameraManager.cs" />
+    <Compile Include="Assets\script\stage1\Lever.cs" />
+    <Compile Include="Assets\script\UI\IngameUI_stg2.cs" />
+    <Compile Include="Assets\script\UI\IngameUI.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -682,43 +698,43 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Unity.InternalAPIEngineBridge.001.Player.csproj">
-      <Project>{978DED8C-61FB-144A-7B72-68E70556448A}</Project>
+      <Project>{47E8A8B5-FE6F-287D-EAF0-BD4A166BFF6D}</Project>
       <Name>Unity.InternalAPIEngineBridge.001.Player</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.2D.PixelPerfect.Player.csproj">
-      <Project>{134D94C1-70E3-2BB7-1D7B-03F03171EA35}</Project>
+      <Project>{06CB7ECC-8933-64D2-B2F5-5B4378F52ED9}</Project>
       <Name>Unity.2D.PixelPerfect.Player</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.Timeline.Player.csproj">
-      <Project>{F7E2E7FB-AC1B-49F6-ED2D-950CDF131F4D}</Project>
+      <Project>{E11622FA-E32C-6EC0-AD1B-6AE5005A8D1B}</Project>
       <Name>Unity.Timeline.Player</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.TextMeshPro.Player.csproj">
-      <Project>{A86BF626-A070-CF97-C96A-73EADFB8D72E}</Project>
+      <Project>{62BCD707-77AC-BD7D-C4B0-856BD48F8823}</Project>
       <Name>Unity.TextMeshPro.Player</Name>
     </ProjectReference>
     <ProjectReference Include="UnityEngine.UI.Player.csproj">
-      <Project>{021B201A-404C-5AB9-D5E2-979EA9AB3CAE}</Project>
+      <Project>{0E219BCE-FB15-4E58-0775-C262B6CD901A}</Project>
       <Name>UnityEngine.UI.Player</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.Mathematics.Player.csproj">
-      <Project>{C792EF2F-962D-33DE-4207-942B651D9DBF}</Project>
+      <Project>{8C6465A8-CF10-E3F8-78C5-B54A9E986F50}</Project>
       <Name>Unity.Mathematics.Player</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.2D.IK.Runtime.Player.csproj">
-      <Project>{0B94052F-ACE8-EC1F-4E2B-789775A3ABA5}</Project>
+      <Project>{07A67F59-605C-4159-BABA-032318970613}</Project>
       <Name>Unity.2D.IK.Runtime.Player</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.2D.Animation.Runtime.Player.csproj">
-      <Project>{3F4699B1-7406-5885-A131-68E042E12E5A}</Project>
+      <Project>{2F5A7D05-5EEA-B8EE-BA15-FF1F8B8A7FF9}</Project>
       <Name>Unity.2D.Animation.Runtime.Player</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.2D.Common.Runtime.Player.csproj">
-      <Project>{F9C41F19-B767-A404-5EBE-5BC17F7FE184}</Project>
+      <Project>{1600F4B9-4D48-7C78-3304-D1AE897EF05E}</Project>
       <Name>Unity.2D.Common.Runtime.Player</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.2D.SpriteShape.Runtime.Player.csproj">
-      <Project>{65C06373-DCA9-AA41-7712-C7245AE0FB98}</Project>
+      <Project>{134B691E-C77C-A7F9-4384-AB2B287F5F02}</Project>
       <Name>Unity.2D.SpriteShape.Runtime.Player</Name>
     </ProjectReference>
   </ItemGroup>

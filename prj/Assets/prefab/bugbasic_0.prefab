@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2498894757522946435}
   - component: {fileID: 4221285466601173092}
   - component: {fileID: 2968500518139424348}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: bugbasic_0
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -132,3 +132,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68bf1e2500d4a4d4198595ff859a4c2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  distance: 3.8

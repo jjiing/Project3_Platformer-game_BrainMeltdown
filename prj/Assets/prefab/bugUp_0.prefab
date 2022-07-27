@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -5135994284016134179}
   - component: {fileID: 3189076561822837685}
   - component: {fileID: 7081516885081773740}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: bugUp_0
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -154,3 +154,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a046bc82be0e974cab0209f2ca557ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  changeDir: 0

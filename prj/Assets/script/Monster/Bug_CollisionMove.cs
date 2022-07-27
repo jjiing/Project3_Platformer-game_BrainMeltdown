@@ -11,7 +11,7 @@ public class Bug_CollisionMove : MonoBehaviour, IMoveCollision
 
     private void Start()
     {
-        moveSpeed = 2f;
+        moveSpeed = 1.5f;
         changeDir = -1;
         spriteRenderer = GetComponent<SpriteRenderer>();
         rigid2d = GetComponent<Rigidbody2D>();
@@ -24,7 +24,7 @@ public class Bug_CollisionMove : MonoBehaviour, IMoveCollision
 
     public void MoveUntilCollison()
     {
-        transform.Translate(new Vector3(moveSpeed *changeDir * Time.deltaTime, 0, 0));
+        transform.Translate(new Vector3(moveSpeed*changeDir * Time.deltaTime, 0, 0));
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

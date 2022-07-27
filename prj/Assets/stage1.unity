@@ -3560,9 +3560,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   savePointNow: 0
-  stage1Cleartime: 0
-  deathCountStage: 0
   deathCountTotal: 0
+  deathCountStage: 0
+  time_total: 0
+  timeNow: 0
 --- !u!4 &541965247
 Transform:
   m_ObjectHideFlags: 0
@@ -3776,8 +3777,10 @@ EdgeCollider2D:
   - {x: -3.3772125, y: 0.28616047}
   - {x: -1.0531769, y: 0.35438442}
   - {x: -0.7086258, y: 2.5484352}
-  - {x: 1.6599274, y: 2.5806406}
-  - {x: 1.8906631, y: 4.5023494}
+  - {x: 1.8597717, y: 2.6091893}
+  - {x: 1.6309891, y: 2.6091893}
+  - {x: 1.4338837, y: 4.5023494}
+  - {x: 4.185425, y: 4.5494175}
   - {x: 4.6850796, y: 4.557965}
   m_AdjacentStartPoint: {x: 0, y: 0}
   m_AdjacentEndPoint: {x: 0, y: 0}
@@ -4119,7 +4122,7 @@ GameObject:
   m_Component:
   - component: {fileID: 692736024}
   - component: {fileID: 692736025}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: camera col
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -5836,7 +5839,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1115490159597458664, guid: a5aa0c0fadbef2a4495263b704c85e9d, type: 3}
       propertyPath: m_SortingOrder
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 1115490159597458666, guid: a5aa0c0fadbef2a4495263b704c85e9d, type: 3}
       propertyPath: m_Name
@@ -6621,8 +6624,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd28a822523115c4d97bbd3ddd733660, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  time_total: 0
-  timeNow: 0
   sTime: 
   sTime_total: 
   clockText: 000000000000000000000000
@@ -8808,7 +8809,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1115490159597458664, guid: a5aa0c0fadbef2a4495263b704c85e9d, type: 3}
       propertyPath: m_SortingOrder
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 1115490159597458666, guid: a5aa0c0fadbef2a4495263b704c85e9d, type: 3}
       propertyPath: m_Name
@@ -10099,6 +10100,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3189076561822837685, guid: 2eaa2dab795caca4aa850cc6d6459137, type: 3}
+      propertyPath: m_Mass
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3189076561822837685, guid: 2eaa2dab795caca4aa850cc6d6459137, type: 3}
+      propertyPath: m_LinearDrag
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4833559946048595521, guid: 2eaa2dab795caca4aa850cc6d6459137, type: 3}
       propertyPath: m_RootOrder
       value: 19
@@ -10146,6 +10155,10 @@ PrefabInstance:
     - target: {fileID: 4875669328917897718, guid: 2eaa2dab795caca4aa850cc6d6459137, type: 3}
       propertyPath: m_Name
       value: bugUp_0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4875669328917897718, guid: 2eaa2dab795caca4aa850cc6d6459137, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2eaa2dab795caca4aa850cc6d6459137, type: 3}
@@ -11655,7 +11668,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1115490159597458664, guid: a5aa0c0fadbef2a4495263b704c85e9d, type: 3}
       propertyPath: m_SortingOrder
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 1115490159597458666, guid: a5aa0c0fadbef2a4495263b704c85e9d, type: 3}
       propertyPath: m_Name
@@ -12930,7 +12943,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8662594535866815335, guid: b4c7d942021a61345be3a8926c0fc6ad, type: 3}
       propertyPath: m_SortingOrder
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b4c7d942021a61345be3a8926c0fc6ad, type: 3}

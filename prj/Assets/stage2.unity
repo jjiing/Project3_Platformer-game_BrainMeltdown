@@ -12599,7 +12599,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1337159748}
   - component: {fileID: 1337159749}
-  m_Layer: 3
+  m_Layer: 10
   m_Name: camera col
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -14488,8 +14488,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 214d0672fc3e5ee40b2b791e340c22b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  time_total: 0
-  timeNow: 0
   sTime: 
   sTime_total: 
   clockText: 000000000000000000000000
@@ -18627,9 +18625,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   savePointNow: 0
-  stage1Cleartime: 0
-  deathCountStage: 0
   deathCountTotal: 0
+  deathCountStage: 0
+  time_total: 0
+  timeNow: 0
 --- !u!4 &1901978388
 Transform:
   m_ObjectHideFlags: 0

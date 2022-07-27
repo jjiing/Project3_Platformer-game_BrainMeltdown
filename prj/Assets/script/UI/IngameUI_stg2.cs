@@ -8,17 +8,18 @@ public class IngameUI_stg2 : IngameUI
 
     private void Start()
     {
+        
+        tryCountManange();
         time_total = GameManager.Instance.stage1Cleartime;
         
     }
 
     private void Update()
     {
-        timeNow += Time.deltaTime;
+        
         time_total += Time.deltaTime;
 
-        sTime = Timer(timeNow, clockText, sClockText);
-        sTime_total = CalculateTotalTime(clockText_total,sClockText_total);
+        SetTime();
         UpdateTimer(sTime, sTime_total);
     }
 

@@ -5,22 +5,22 @@ using UnityEngine.UI;
 
 public class IngameUI_stg1 : IngameUI
 {
-
+    private void Start()
+    {
+        
+        tryCountManange();
+    }
     private void Update()
     {
-        timeNow += Time.deltaTime;
-
-        sTime = Timer(timeNow, clockText, sClockText);
-        sTime_total = CalculateTotalTime(clockText_total, sClockText);
+        SetTime();
         UpdateTimer(sTime, sTime_total);
-
-        if (GameManager.Instance.savePointNow ==4) TimeSave();
+        if (GameManager.Instance.savePointNow ==4) Stage1ClearTimeSave();
         
     
     }
-    void TimeSave()
+    void Stage1ClearTimeSave()
     {
-        GameManager.Instance.stage1Cleartime = Mathf.Round(timeNow);
+        GameManager.Instance.stage1Cleartime = Mathf.Round(GameManager.Instance.timeNow);
     }
     
     public override string CalculateTotalTime(int[] nTimeText, string[] sTimeText)

@@ -59,12 +59,10 @@
     <Compile Include="Assets\script\management\ObjectPool.cs" />
     <Compile Include="Assets\script\stage2\ObjectOnOffVer2.cs" />
     <Compile Include="Assets\script\stage2\ObjectOnOff.cs" />
-    <Compile Include="Assets\script\Interface\IMovePingpong.cs" />
     <Compile Include="Assets\script\management\Player_yellow.cs" />
     <Compile Include="Assets\script\stage2\blockFadeManage.cs" />
     <Compile Include="Assets\script\stage1\Rotate.cs" />
     <Compile Include="Assets\script\stage2\PlayerOnCheckChild.cs" />
-    <Compile Include="Assets\script\Interface\IAttackable.cs" />
     <Compile Include="Assets\script\stage2\LandMoveUpStg2.cs" />
     <Compile Include="Assets\script\stage2\RotateObstacle.cs" />
     <Compile Include="Assets\script\management\Singleton.cs" />
@@ -72,14 +70,13 @@
     <Compile Include="Assets\script\Monster\Bug_CollisionMove.cs" />
     <Compile Include="Assets\script\management\Player.cs" />
     <Compile Include="Assets\script\management\clearPoint1.cs" />
-    <Compile Include="Assets\script\Interface\IMoveRight.cs" />
     <Compile Include="Assets\script\Monster\Bug_AutoMove.cs" />
-    <Compile Include="Assets\script\Interface\IRotate.cs" />
     <Compile Include="Assets\script\stage1\LandMoveRight.cs" />
+    <Compile Include="Assets\script\UI\IngameUI_stg2.cs" />
     <Compile Include="Assets\script\stage2\ProjectiveObstacle.cs" />
     <Compile Include="Assets\script\stage2\Projective4ways.cs" />
+    <Compile Include="Assets\script\UI\IngameUI.cs" />
     <Compile Include="Assets\script\stage2\PlayerOnCheckParents.cs" />
-    <Compile Include="Assets\script\Interface\IProjective.cs" />
     <Compile Include="Assets\script\stage1\LandMoveRightChild.cs" />
     <Compile Include="Assets\script\stage1\LandUpByLever.cs" />
     <Compile Include="Assets\script\stage2\RandomPrefabOn.cs" />
@@ -87,12 +84,12 @@
     <Compile Include="Assets\script\Monster\MonsterShooting.cs" />
     <Compile Include="Assets\script\management\savePoint.cs" />
     <Compile Include="Assets\script\stage2\LandMoveStage2.cs" />
-    <Compile Include="Assets\script\Interface\IMoveCollision.cs" />
     <Compile Include="Assets\script\management\GameManager.cs" />
     <Compile Include="Assets\script\management\CameraManager.cs" />
     <Compile Include="Assets\script\stage1\Lever.cs" />
-    <Compile Include="Assets\script\UI\IngameUI_stg2.cs" />
-    <Compile Include="Assets\script\UI\IngameUI.cs" />
+    <Compile Include="Assets\script\UI\MainSceneUI.cs" />
+    <Compile Include="Assets\script\UI\MenuUI.cs" />
+    <Compile Include="Assets\script\management\InterfaceManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

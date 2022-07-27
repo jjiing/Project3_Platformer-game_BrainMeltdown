@@ -20,6 +20,7 @@ public class clearPoint1 : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             anim.SetTrigger("isArrived");
+            GameManager.Instance.deathCountStage = 0;
             GameManager.Instance.savePointNow = 4;
             SceneManager.LoadScene("stage2");
            

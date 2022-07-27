@@ -14488,11 +14488,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 214d0672fc3e5ee40b2b791e340c22b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  time: 0
+  time_total: 0
+  timeNow: 0
   sTime: 
-  tryCount: 0
+  sTime_total: 
+  clockText: 000000000000000000000000
+  sClockText:
+  - 
+  - 
+  - 
+  clockText_total: 000000000000000000000000
+  sClockText_total:
+  - 
+  - 
+  - 
   text_Timer_Total: {fileID: 1432418830}
   text_Timer_Stage: {fileID: 1970193694}
+  text_DeathCountTotal: {fileID: 1703817744}
+  text_DeathCountStage: {fileID: 1942328039}
 --- !u!1 &1477164343
 GameObject:
   m_ObjectHideFlags: 0
@@ -16653,7 +16666,7 @@ GameObject:
   - component: {fileID: 1703817745}
   - component: {fileID: 1703817744}
   m_Layer: 5
-  m_Name: try
+  m_Name: death
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18614,7 +18627,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   savePointNow: 0
-  stage1Cleartime: 
+  stage1Cleartime: 0
+  deathCountStage: 0
+  deathCountTotal: 0
 --- !u!4 &1901978388
 Transform:
   m_ObjectHideFlags: 0
@@ -18945,7 +18960,7 @@ GameObject:
   - component: {fileID: 1942328040}
   - component: {fileID: 1942328039}
   m_Layer: 5
-  m_Name: try
+  m_Name: death
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

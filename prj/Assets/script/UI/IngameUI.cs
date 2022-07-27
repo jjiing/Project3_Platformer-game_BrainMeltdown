@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public abstract class IngameUI : MonoBehaviour
 {
     public float time_total;
-    public float timeNow;
+
     public string sTime;
     public string sTime_total;
     public int[] clockText = new int[3];
@@ -15,10 +15,28 @@ public abstract class IngameUI : MonoBehaviour
     public string[] sClockText_total = new string[3];
 
 
-    public int tryCount;
+
+
     public Text text_Timer_Total;
     public Text text_Timer_Stage;
+    public Text text_DeathCountTotal;
+    public Text text_DeathCountStage;
 
+
+
+    protected void tryCountManange()
+    {
+        text_DeathCountTotal.text = GameManager.Instance.deathCountTotal.ToString();
+        text_DeathCountStage.text = GameManager.Instance.deathCountStage.ToString();
+    }
+    public void SetTime()
+    {
+        GameManager.Instance.timeNow += Time.deltaTime;
+
+        sTime = Timer(GameManager.Instance.timeNow, clockText, sClockText);
+        sTime_total = CalculateTotalTime(clockText_total, sClockText);
+
+    }
     public string Timer(float timeNow, int[] nTimeText, string[] sTimeText)
     {
 
@@ -40,7 +58,7 @@ public abstract class IngameUI : MonoBehaviour
         
        
     }
-
+    
     public void UpdateTimer(string timeStage, string timeTotal)
     {
         text_Timer_Total.text = timeTotal;

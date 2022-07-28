@@ -19,6 +19,7 @@ public class GameManager : Singleton<GameManager>
     public string[] path = new string[3];
 
     public bool isGameOver;
+    public bool isPaused;
 
 
     public void Awake()
@@ -30,6 +31,7 @@ public class GameManager : Singleton<GameManager>
             path[i] = Path.Combine(Application.dataPath, "DATA", "data" + (i + 1).ToString() + ".json");
         }
         isGameOver = false;
+        isPaused = false;
 
     }
     private void Update()

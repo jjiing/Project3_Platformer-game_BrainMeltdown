@@ -7,7 +7,7 @@ public class IngameUI_stg1 : IngameUI
 {
     private void Start()
     {
-        
+
         tryCountManange();
     }
     private void Update()
@@ -15,9 +15,12 @@ public class IngameUI_stg1 : IngameUI
         TimeWorking();
         SetTime();
         UpdateTimer(sTime, sTime_total);
-        
-        
-    
+        GameOver();
+        OnPause();
+
+
+
+
     }
 
 

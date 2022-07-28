@@ -24,6 +24,16 @@ public class IngameUI : MonoBehaviour
     public Text gameover_text_DeathCountTotal;
     public Text gameover_text_DeathCountStage;
 
+    public Image paused;
+
+
+    public int gameOverInt=1;
+    public int pauseInt=1;
+    public int GameOverInt { get { return gameOverInt; }  set { gameOverInt= value;} }
+    public int PauseInt { get { return pauseInt; } set { pauseInt= value;} }
+    public Image[] gameOverOption = new Image[2];
+    public Image[] pauseOption = new Image[4];
+
 
 
     protected void tryCountManange()
@@ -48,18 +58,81 @@ public class IngameUI : MonoBehaviour
     {
         if (GameManager.Instance.isGameOver)
         {
+
             gameOver.gameObject.SetActive(true);
             gameover_text_Timer_Total.text = sTime_total;
             gameover_text_Timer_Stage.text = sTime;
             gameover_text_DeathCountTotal.text = GameManager.Instance.deathCountTotal.ToString();
             gameover_text_DeathCountStage.text = GameManager.Instance.deathCountStage.ToString();
-        
-            if(Input.GetKeyDown(KeyCode.Return))
+            tryCountManange();
+            OptionSelect(GameOverInt, gameOverOption, 2);
+            if (Input.GetKeyDown(KeyCode.Return))
             {
+                GameManager.Instance.isGameOver = false;
+                gameOver.gameObject.SetActive(false);
                 Time.timeScale = 1;
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                if (gameOverInt == 1)
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                else if (gameOverInt == 2)
+                    SceneManager.LoadScene("Menu");
             }
         }
+    }
+    public void OnPause()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+            GameManager.Instance.isPaused = true;
+        if(GameManager.Instance.isPaused)
+        {
+            Time.timeScale = 0;
+            paused.gameObject.SetActive(true);
+            OptionSelect(PauseInt, pauseOption, 4);
+            if(Input.GetKeyDown(KeyCode.Return) && pauseInt!=4)
+            {
+                GameManager.Instance.isPaused = false;
+                if (pauseInt == 2) SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                else if (pauseInt == 3)
+                {
+                    GameManager.Instance.SaveJason();
+                    SceneManager.LoadScene("Menu");
+                    
+                }      
+            }
+   
+        }
+        else
+        {
+            GameManager.Instance.isPaused = false;
+            Time.timeScale = 1;
+            paused.gameObject.SetActive(false);
+
+        }
+        
+    }
+
+
+    public void OptionSelect(int option, Image[] optionBox,  int limitnum)
+    {
+        if (Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            Debug.Log("아래화살표");
+            if (option < limitnum)
+            { 
+                option++;
+                PauseInt++;
+                Debug.Log("option : " + option+ ", pausenum : "+pauseInt); 
+            }
+        }
+
+        else if (Input.GetKeyDown(KeyCode.UpArrow))
+        { if (option > 1) option--; }
+
+        for (int i = 0; i < optionBox.Length; i++)
+            optionBox[i].gameObject.SetActive(false);
+
+        optionBox[option - 1].gameObject.SetActive(true);
+
+
     }
     //public string Timer(float timeNow, int[] nTimeText, string[] sTimeText)
     //{

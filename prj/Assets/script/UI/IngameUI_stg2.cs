@@ -8,6 +8,7 @@ public class IngameUI_stg2 : IngameUI
 
     private void Start()
     {
+        
         GameManager.Instance.timeNow = 0;
         GameManager.Instance.time_total = Mathf.Round(GameManager.Instance.time_total);
         
@@ -21,6 +22,8 @@ public class IngameUI_stg2 : IngameUI
         TimeWorking();
         SetTime();
         UpdateTimer(sTime, sTime_total);
+        GameOver();
+        OnPause();
     }
 
    

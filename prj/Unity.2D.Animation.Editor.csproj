@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{32A1F812-0C45-0663-99CF-7E7AD121B8CE}</ProjectGuid>
+    <ProjectGuid>{5B2B9DD0-1E2E-6ECC-CE80-68AED8CD5D8D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Unity.2D.Animation.Editor</AssemblyName>
@@ -74,8 +74,8 @@
     <Compile Include="Library\PackageCache\com.unity.2d.animation@5.2.0\Editor\SpriteSkin\BoneGizmo.cs" />
     <Compile Include="Library\PackageCache\com.unity.2d.animation@5.2.0\Editor\SkinningModule\ModuleUtility.cs" />
     <Compile Include="Library\PackageCache\com.unity.2d.animation@5.2.0\Editor\SkinningModule\Triangulation\ITriangulator.cs" />
-    <Compile Include="Library\PackageCache\com.unity.2d.animation@5.2.0\Editor\SkinningModule\VisibilityTool\VisibilityTool.cs" />
     <Compile Include="Library\PackageCache\com.unity.2d.animation@5.2.0\Editor\SkinningModule\SkinningCache\MeshPreviewCache.cs" />
+    <Compile Include="Library\PackageCache\com.unity.2d.animation@5.2.0\Editor\SkinningModule\VisibilityTool\VisibilityTool.cs" />
     <Compile Include="Library\PackageCache\com.unity.2d.animation@5.2.0\Editor\SpriteLib\SpriteLibraryDataProvider.cs" />
     <Compile Include="Library\PackageCache\com.unity.2d.animation@5.2.0\Editor\SkinningModule\IMGUI\RectSlider.cs" />
     <Compile Include="Library\PackageCache\com.unity.2d.animation@5.2.0\Editor\SpriteLib\SpriteLibraryAssetInspector.cs" />
@@ -487,6 +487,9 @@
     <Reference Include="Unity.Plastic.Newtonsoft.Json">
       <HintPath>Library\PackageCache\com.unity.collab-proxy@1.15.15\Lib\Editor\PlasticSCM\Unity.Plastic.Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>Assets\JsonDotNet\Assemblies\Standalone\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.Plastic.Antlr3.Runtime">
       <HintPath>Library\PackageCache\com.unity.collab-proxy@1.15.15\Lib\Editor\PlasticSCM\Unity.Plastic.Antlr3.Runtime.dll</HintPath>
     </Reference>
@@ -850,47 +853,47 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Unity.InternalAPIEditorBridge.001.csproj">
-      <Project>{918F8636-1259-42BD-6481-20B37B210FAE}</Project>
+      <Project>{2209C83F-29AB-7E94-2236-4B09C94BC618}</Project>
       <Name>Unity.InternalAPIEditorBridge.001</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.InternalAPIEngineBridge.001.csproj">
-      <Project>{309E5F21-E202-8E10-B4A4-146BAC43B597}</Project>
+      <Project>{2EA0FD54-4169-D1EC-413C-A0B8EEE84B71}</Project>
       <Name>Unity.InternalAPIEngineBridge.001</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.2D.Common.Editor.csproj">
-      <Project>{BF571590-0BF0-1BB2-AEE4-491803A9D489}</Project>
+      <Project>{AD2B6685-EA1E-0118-736F-0F44960E6EED}</Project>
       <Name>Unity.2D.Common.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.2D.Common.Runtime.csproj">
-      <Project>{530B11AB-05F3-FF77-D617-C172617EC378}</Project>
+      <Project>{42159F26-FEBC-22AF-6A98-F20BEB1ECCEE}</Project>
       <Name>Unity.2D.Common.Runtime</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.2D.Animation.Runtime.csproj">
-      <Project>{683E0CFC-CD64-4C34-EC28-9CE63579B4B7}</Project>
+      <Project>{0017C025-1B2A-A6A7-CE79-7AB5C0B668D7}</Project>
       <Name>Unity.2D.Animation.Runtime</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.2D.Animation.Triangle.Editor.csproj">
-      <Project>{6FB81672-613D-2FCD-CD35-C0D85E897553}</Project>
+      <Project>{841CE58C-AEA2-90F9-E1EA-D7660EC05F10}</Project>
       <Name>Unity.2D.Animation.Triangle.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.2D.Sprite.Editor.csproj">
-      <Project>{B2D12459-1B31-B77F-FBD9-AB62994C6710}</Project>
+      <Project>{05794DD8-1CB7-1556-7D0A-BE9CD7F60E6A}</Project>
       <Name>Unity.2D.Sprite.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="UnityEditor.UI.csproj">
-      <Project>{91E8E8E9-4D66-B72A-EFC4-63DBF4EDC4C5}</Project>
+      <Project>{244781ED-D2AB-F647-E1C1-707CA08E3194}</Project>
       <Name>UnityEditor.UI</Name>
     </ProjectReference>
     <ProjectReference Include="UnityEngine.UI.csproj">
-      <Project>{12CCFCC7-EA4B-3F1E-0D74-10535D96A69D}</Project>
+      <Project>{9690A3F8-3202-87EE-1F99-D3676D46AB15}</Project>
       <Name>UnityEngine.UI</Name>
     </ProjectReference>
     <ProjectReference Include="UnityEngine.TestRunner.csproj">
-      <Project>{1DF997B0-0E17-E0ED-86DC-061A4B5133A4}</Project>
+      <Project>{AB5E7B8E-D56F-4ABC-3D84-CD81E98B41FF}</Project>
       <Name>UnityEngine.TestRunner</Name>
     </ProjectReference>
     <ProjectReference Include="UnityEditor.TestRunner.csproj">
-      <Project>{08A2F749-5145-DED6-9FF2-932EC11A48B3}</Project>
+      <Project>{A2BFEBEF-C845-3B62-BE77-EDEC628F871E}</Project>
       <Name>UnityEditor.TestRunner</Name>
     </ProjectReference>
   </ItemGroup>

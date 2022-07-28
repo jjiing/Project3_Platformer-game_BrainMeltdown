@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{CF2FFBC9-3893-FE68-2B18-DD599E0A996F}</ProjectGuid>
+    <ProjectGuid>{1ABC8F1B-B438-B694-E347-457D58A2E1C7}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Unity.2D.SpriteShape.Runtime</AssemblyName>
@@ -313,6 +313,9 @@
     </Reference>
     <Reference Include="Unity.Plastic.Newtonsoft.Json">
       <HintPath>Library\PackageCache\com.unity.collab-proxy@1.15.15\Lib\Editor\PlasticSCM\Unity.Plastic.Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>Assets\JsonDotNet\Assemblies\Standalone\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Plastic.Antlr3.Runtime">
       <HintPath>Library\PackageCache\com.unity.collab-proxy@1.15.15\Lib\Editor\PlasticSCM\Unity.Plastic.Antlr3.Runtime.dll</HintPath>
@@ -671,19 +674,19 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Unity.2D.Common.Runtime.csproj">
-      <Project>{530B11AB-05F3-FF77-D617-C172617EC378}</Project>
+      <Project>{42159F26-FEBC-22AF-6A98-F20BEB1ECCEE}</Project>
       <Name>Unity.2D.Common.Runtime</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.Mathematics.csproj">
-      <Project>{9D27A3FF-BAAC-6AFC-55CE-4BAA32A388D2}</Project>
+      <Project>{22D3CB6F-C91F-026C-B1C8-7E1A07DE9614}</Project>
       <Name>Unity.Mathematics</Name>
     </ProjectReference>
     <ProjectReference Include="UnityEditor.UI.csproj">
-      <Project>{91E8E8E9-4D66-B72A-EFC4-63DBF4EDC4C5}</Project>
+      <Project>{244781ED-D2AB-F647-E1C1-707CA08E3194}</Project>
       <Name>UnityEditor.UI</Name>
     </ProjectReference>
     <ProjectReference Include="UnityEngine.UI.csproj">
-      <Project>{12CCFCC7-EA4B-3F1E-0D74-10535D96A69D}</Project>
+      <Project>{9690A3F8-3202-87EE-1F99-D3676D46AB15}</Project>
       <Name>UnityEngine.UI</Name>
     </ProjectReference>
   </ItemGroup>

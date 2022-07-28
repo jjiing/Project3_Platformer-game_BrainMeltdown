@@ -18,7 +18,7 @@ public class IngameUI_stg2 : IngameUI
 
     private void Update()
     {
-
+        TimeWorking();
         SetTime();
         UpdateTimer(sTime, sTime_total);
     }

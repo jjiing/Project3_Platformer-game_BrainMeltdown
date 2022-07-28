@@ -16,6 +16,7 @@ public class Bug_AutoMove : MonoBehaviour, IMovePingpong
 
         pos = transform.position;
         spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer.flipX = true;
      
 
     }

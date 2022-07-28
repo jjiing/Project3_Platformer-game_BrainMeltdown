@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{2CB3D540-FA76-970C-6900-791E5FA6D6B8}</ProjectGuid>
+    <ProjectGuid>{735114A3-94DB-0D2C-6A1D-CDA7609FBFB0}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Unity.VisualStudio.Editor</AssemblyName>
@@ -330,6 +330,9 @@
     </Reference>
     <Reference Include="SyntaxTree.VisualStudio.Unity.Bridge">
       <HintPath>C:\Program Files (x86)\Microsoft Visual Studio Tools for Unity\16.0\Editor\SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>Assets\JsonDotNet\Assemblies\Standalone\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework">
       <HintPath>Library\PackageCache\com.unity.ext.nunit@1.0.6\net35\unity-custom\nunit.framework.dll</HintPath>
@@ -685,19 +688,19 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="UnityEditor.UI.csproj">
-      <Project>{91E8E8E9-4D66-B72A-EFC4-63DBF4EDC4C5}</Project>
+      <Project>{244781ED-D2AB-F647-E1C1-707CA08E3194}</Project>
       <Name>UnityEditor.UI</Name>
     </ProjectReference>
     <ProjectReference Include="UnityEngine.UI.csproj">
-      <Project>{12CCFCC7-EA4B-3F1E-0D74-10535D96A69D}</Project>
+      <Project>{9690A3F8-3202-87EE-1F99-D3676D46AB15}</Project>
       <Name>UnityEngine.UI</Name>
     </ProjectReference>
     <ProjectReference Include="UnityEngine.TestRunner.csproj">
-      <Project>{1DF997B0-0E17-E0ED-86DC-061A4B5133A4}</Project>
+      <Project>{AB5E7B8E-D56F-4ABC-3D84-CD81E98B41FF}</Project>
       <Name>UnityEngine.TestRunner</Name>
     </ProjectReference>
     <ProjectReference Include="UnityEditor.TestRunner.csproj">
-      <Project>{08A2F749-5145-DED6-9FF2-932EC11A48B3}</Project>
+      <Project>{A2BFEBEF-C845-3B62-BE77-EDEC628F871E}</Project>
       <Name>UnityEditor.TestRunner</Name>
     </ProjectReference>
   </ItemGroup>

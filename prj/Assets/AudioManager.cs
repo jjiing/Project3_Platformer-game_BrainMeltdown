@@ -38,11 +38,12 @@ public class AudioManager : Singleton<AudioManager>
         {
             if(_name == soundClass[i].name)
             {
-                audioSources[audioSourceNum].clip = soundClass[i].clip;
-                audioSources[audioSourceNum].Play();
+                audioSources[audioSourceNum-1].clip = soundClass[i].clip;
+                audioSources[audioSourceNum-1].Play();
 
             }
         }
     }
+
   
 }

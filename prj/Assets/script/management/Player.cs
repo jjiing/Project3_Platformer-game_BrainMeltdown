@@ -24,7 +24,7 @@ public abstract class Player : MonoBehaviour
     protected bool isUp;
     public bool isDown;
     public bool isGrounded;
-    protected bool isDead;
+
 
     protected GameObject currentSavePoint;
     protected Vector3 currentSavePointPos;
@@ -34,7 +34,7 @@ public abstract class Player : MonoBehaviour
     protected CapsuleCollider2D collider;
     protected CapsuleCollider2D childCollider;
 
-    protected GameObject dieEffect;
+    public GameObject dieEffect;
     protected SpriteRenderer dieEffectSR;
     protected Animator dieEffectAnim;
 
@@ -71,13 +71,14 @@ public abstract class Player : MonoBehaviour
         isUp = false;
         isDown = false;
         isGrounded = true;
-        isDead = false;
 
 
 
-        Color color = spriteRenderer.color;
-        color.a = 1;
-        spriteRenderer.color = color;
+
+        //Color color = spriteRenderer.color;
+        //color.a = 1;
+        //spriteRenderer.color = color;
+        //collider.enabled = true;
 
 
         currentSavePoint = GameObject.Find("savePoint" + GameManager.Instance.savePointNow.ToString());
@@ -100,11 +101,14 @@ public abstract class Player : MonoBehaviour
 
     protected void MoveAnim()
     {
-        animator.SetBool("isSit", isSit);
-        if (!isUp && !isDown) animator.SetBool("isRun", isRun); //점프중에는 달리는 애니메이션X
-        else animator.SetBool("isRun", false);
-        animator.SetBool("isUp", isUp);
-        animator.SetBool("isDown", isDown);
+        if (!GameManager.Instance.isPaused)
+        {
+            animator.SetBool("isSit", isSit);
+            if (!isUp && !isDown) animator.SetBool("isRun", isRun); //점프중에는 달리는 애니메이션X
+            else animator.SetBool("isRun", false);
+            animator.SetBool("isUp", isUp);
+            animator.SetBool("isDown", isDown);
+        }
     }
 
     protected abstract void Move();
@@ -113,11 +117,14 @@ public abstract class Player : MonoBehaviour
 
     protected void DieEffect()
     {
-        Color color = spriteRenderer.color;
-        color.a = 0;
-        spriteRenderer.color = color;
-
-        dieEffect.SetActive(true);
+        //Color color = spriteRenderer.color;
+        //color.a = 0;
+        //spriteRenderer.color = color;
+        //collider.enabled = false;
+        var dieEffect_=Instantiate(dieEffect, transform.position, transform.rotation);
+        dieEffect_.SetActive(true);
+        gameObject.SetActive(false);
+        
 
 
     }
@@ -127,8 +134,7 @@ public abstract class Player : MonoBehaviour
     {
         if (collision.gameObject.tag == "Obstacle")
         {
-            
-            isDead = true;
+            GameManager.Instance.isDead = true;
             GameManager.Instance.GameOver();
             DieEffect();
 
@@ -136,13 +142,12 @@ public abstract class Player : MonoBehaviour
         else if (collision.gameObject.tag == "Ground")
         {
             isGrounded = true;
-            if (!isDead)
+            if (!GameManager.Instance.isDead)
             {
                 GameObject landingEffect = objectPool.UsePrefab();
                 landingEffect.transform.position = footPos.position;
                 StartCoroutine(GetBackPrefabCo(landingEffect));
             }
-
 
         }
     }

@@ -91,6 +91,7 @@
     <Compile Include="Assets\script\stage1\Lever.cs" />
     <Compile Include="Assets\script\UI\MenuUI.cs" />
     <Compile Include="Assets\script\management\DataSave.cs" />
+    <Compile Include="Assets\AudioManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\JsonDotNet\link.xml" />

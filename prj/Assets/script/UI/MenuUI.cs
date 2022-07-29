@@ -38,11 +38,11 @@ public class MenuUI : MonoBehaviour
     {
         if (box1active)
         {
-            if (Input.GetKeyDown(KeyCode.DownArrow))
-            { if (dataNum < 3) dataNum++; }
+            if (Input.GetKeyDown(KeyCode.DownArrow) && dataNum<3)
+                dataNum++;
 
-            else if (Input.GetKeyDown(KeyCode.UpArrow))
-            { if (dataNum > 1) dataNum--; }
+            else if (Input.GetKeyDown(KeyCode.UpArrow) && dataNum>1)
+                dataNum--; 
         }
 
     }
@@ -88,6 +88,7 @@ public class MenuUI : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Return))
             {
                 dataSaveScript.JsonSave(dataNum);
+                dataSaveScript.GiveGameManagerInfo(dataNum);
                 GameManager.Instance.dataNum = dataNum;
                 SceneManager.LoadScene("stage1");
             }
@@ -104,4 +105,5 @@ public class MenuUI : MonoBehaviour
         box2.gameObject.SetActive(bool_);
         normalbox.gameObject.SetActive(bool_);
     }
+ 
 }

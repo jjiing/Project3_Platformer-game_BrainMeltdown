@@ -18,15 +18,18 @@ public class Player_yellow : Player
     
     void Update()
     {
-        //재정의
-        Move();
-        Jump();
-        Sit();
+        
+        
+         //재정의
+         Move();
+         Jump();
+         Sit();
 
-        //상속
-        StateUpDown();
-        MoveAnim();
-
+         //상속
+         StateUpDown();
+         MoveAnim();
+        
+    
     }
 
   
@@ -43,8 +46,11 @@ public class Player_yellow : Player
         else rigid2d.constraints = RigidbodyConstraints2D.FreezeRotation;
 
         //anim 좌우방향설정
-        if (moveX < 0) spriteRenderer.flipX = false;
-        else if (moveX > 0) spriteRenderer.flipX = true;
+        if (!GameManager.Instance.isPaused)
+        {
+            if (moveX < 0) spriteRenderer.flipX = false;
+            else if (moveX > 0) spriteRenderer.flipX = true;
+        }
 
 
         //상태 설정
@@ -66,19 +72,21 @@ public class Player_yellow : Player
     }
     protected override void Sit()
     {
-        if (Input.GetKey(KeyCode.DownArrow))
-        {
-            isSit = true;
-            collider.enabled = false;
-            childCollider.enabled = true;
 
-        }
-        else
-        {
-            isSit = false;
-            collider.enabled = true;
-            childCollider.enabled = false;
-        }
+            if (Input.GetKey(KeyCode.DownArrow))
+            {
+                isSit = true;
+                collider.enabled = false;
+                childCollider.enabled = true;
+
+            }
+            else
+            {
+                isSit = false;
+                collider.enabled = true;
+                childCollider.enabled = false;
+            }
+
     }
     
 }

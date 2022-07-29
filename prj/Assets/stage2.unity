@@ -4685,7 +4685,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 1202086494493474660, guid: 6091e500abd2b3b438272151acba5b2d, type: 3}
+  m_Sprite: {fileID: -4726384185465530198, guid: ec85bd9301f60b0409a104c03db68a6a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -16671,6 +16671,8 @@ MonoBehaviour:
   gameover_text_DeathCountTotal: {fileID: 459983252}
   gameover_text_DeathCountStage: {fileID: 2104793070}
   paused: {fileID: 1768089835}
+  gameOverInt: 1
+  pauseInt: 1
   gameOverOption:
   - {fileID: 1391572584}
   - {fileID: 665529239}

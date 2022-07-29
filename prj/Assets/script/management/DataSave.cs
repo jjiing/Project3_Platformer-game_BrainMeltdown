@@ -45,6 +45,9 @@ public class DataSave : MonoBehaviour
     public Text totalDeath;
     public Text savePoint;
     public Text totalTime;
+    public Text bestSavePoint;
+
+    public Image[] recordIcon = new Image[3];
 
 
 
@@ -54,7 +57,7 @@ public class DataSave : MonoBehaviour
         {
             path[i] = GameManager.Instance.path[i];
         }
-
+        BestSavePoint();
     }
 
     
@@ -62,44 +65,37 @@ public class DataSave : MonoBehaviour
     {
         
     }
-    public void onClick()
-    {
-        Debug.Log("온클릭실행");
-    }
-    public void NewData()
-    {
-        Debug.Log("실행");
-        //Data data = new Data(0, 0, 0, 0, 0);
-       // string jdata= JsonConvert.SerializeObject(data);
 
-        //byte[] bytes = System.Text.Encoding.UTF8.GetBytes(jdata);
-        //string format = System.Convert.ToBase64String(bytes);
-        
-        //File.WriteAllText(Application.dataPath + "/DATA1.json", jdata);
-
-    }
 
     public void ShowDataRecord(int num)
     {
         Data data = new Data();
-
-        
+ 
 
         if (File.Exists(path[num-1]))
         {
-            
-            
+            for (int i = 0; i < recordIcon.Length; i++)
+            {
+                recordIcon[i].gameObject.SetActive(true);
+            }
+
             string loadJson = File.ReadAllText(path[num - 1]);
-            data = JsonUtility.FromJson<Data>(loadJson);
+            byte[] bytes = System.Convert.FromBase64String(loadJson);
+            string reformat = System.Text.Encoding.UTF8.GetString(bytes);
+            data = JsonUtility.FromJson<Data>(reformat);
             totalDeath.text = data.deathCountTotal.ToString();
             savePoint.text = data.savePoint.ToString();
             totalTime.text = GameManager.Instance.Timer(data.timeTotal);
         }
         else
         {
-            totalDeath.text = "0";
-            savePoint.text = "0";
-            totalTime.text = "00  00  00";
+            for(int i = 0;i<recordIcon.Length;i++)
+            {
+                recordIcon[i].gameObject.SetActive(false);
+            }
+            totalDeath.text = "";
+            savePoint.text = "";
+            totalTime.text = "EMPTY";
         }
 
     }
@@ -109,7 +105,9 @@ public class DataSave : MonoBehaviour
         if (File.Exists(path[num - 1]))
         {
             string loadJson = File.ReadAllText(path[num - 1]);
-            data = JsonUtility.FromJson<Data>(loadJson);
+            byte[] bytes = System.Convert.FromBase64String(loadJson);
+            string reformat = System.Text.Encoding.UTF8.GetString(bytes);
+            data = JsonUtility.FromJson<Data>(reformat);
             GameManager.Instance.dataNum = data.dataNum;
             GameManager.Instance.savePointNow = data.savePoint;
             GameManager.Instance.deathCountTotal = data.deathCountTotal;
@@ -126,7 +124,9 @@ public class DataSave : MonoBehaviour
         {
             data.SetData(num, 0, 0, 0, 0, 0);
             string jdata = JsonConvert.SerializeObject(data);
-            File.WriteAllText(path[num-1], jdata);
+            byte[] bytes = System.Text.Encoding.UTF8.GetBytes(jdata);
+            string format = System.Convert.ToBase64String(bytes);
+            File.WriteAllText(path[num-1], format);
         }
     }
 
@@ -145,4 +145,26 @@ public class DataSave : MonoBehaviour
         File.Delete(path[num - 1]);
     }
 
+
+    private void BestSavePoint()
+    {
+        int BestSP=0;
+        for(int i = 0;i<path.Length;i++)
+        {
+            
+            if(File.Exists(path[i]))
+            {
+                Data data = new Data();
+                string loadJson = File.ReadAllText(path[i]);
+                byte[] bytes = System.Convert.FromBase64String(loadJson);
+                string reformat = System.Text.Encoding.UTF8.GetString(bytes);
+                data = JsonUtility.FromJson<Data>(reformat);
+                if (data.savePoint > BestSP)
+                    BestSP = data.savePoint;
+            }
+        }
+        bestSavePoint.text = BestSP.ToString();
+
+
+    }
 }

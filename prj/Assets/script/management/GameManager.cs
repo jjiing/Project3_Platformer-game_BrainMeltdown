@@ -20,6 +20,7 @@ public class GameManager : Singleton<GameManager>
 
     public bool isGameOver;
     public bool isPaused;
+    public bool isDead;
 
 
     public void Awake()
@@ -32,11 +33,12 @@ public class GameManager : Singleton<GameManager>
         }
         isGameOver = false;
         isPaused = false;
+        isDead = false;
 
     }
     private void Update()
     {
- 
+
 
     }
     public void GameOver()
@@ -45,21 +47,15 @@ public class GameManager : Singleton<GameManager>
     }
     IEnumerator GameOverCo()
     {
-
+        
         deathCountStage++;
         deathCountTotal++;
-        yield return new WaitForSeconds(1f);
+        Time.timeScale = 0;
+        yield return new WaitForSecondsRealtime(0.5f);
         isGameOver = true;
         SaveJason();
-        Time.timeScale = 0;
         
         
-        
-        
-        
-        
-        //SceneManager.LoadScene("Menu");
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
   
     }
     public void SaveJason()
@@ -70,26 +66,14 @@ public class GameManager : Singleton<GameManager>
         Data data = new Data();
         data.SetData(dataNum, savePointNow, deathCountTotal, deathCountStage, time_total, timeNow);
         string jdata = JsonConvert.SerializeObject(data);
-        
-        File.WriteAllText(path[dataNum - 1], jdata);
+        byte[] bytes = System.Text.Encoding.UTF8.GetBytes(jdata);
+        string format = System.Convert.ToBase64String(bytes);
+        File.WriteAllText(path[dataNum - 1], format);
 
     }
 
 
-    //public void loadDATA(int num)
-    //{
-    //    string jdata = File.ReadAllText(Application.dataPath + "/DATA"+num+".json");
-    //    //byte[] bytes = System.Convert.FromBase64String(jdata);
-    //    //string reformat = System.Text.Encoding.UTF8.GetString(bytes);
-        
-    //    Data data = JsonConvert.DeserializeObject<Data>(jdata);
-    //    savePointNow = data.savePoint;
-    //    deathCountTotal=data.deathCountTotal;
-    //    deathCountStage = data.deathCountStage;
-    //    time_total = data.timeTotal;
-    //    timeNow = data.timeStage;
 
-    //}
 
     public string Timer(float timeNow)
     {

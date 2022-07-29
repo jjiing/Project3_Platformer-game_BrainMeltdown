@@ -40,8 +40,11 @@ public class Player_purple : Player
         else rigid2d.constraints = RigidbodyConstraints2D.FreezeRotation;
 
         //anim 좌우방향설정
-        if (moveX < 0) spriteRenderer.flipX = false;
-        else if (moveX > 0) spriteRenderer.flipX = true;
+        if (!GameManager.Instance.isPaused)
+        {
+            if (moveX < 0) spriteRenderer.flipX = false;
+            else if (moveX > 0) spriteRenderer.flipX = true;
+        }
 
 
         //상태 설정
@@ -63,18 +66,20 @@ public class Player_purple : Player
     }
     protected override void Sit()
     {
-        if (Input.GetKey(KeyCode.S))
-        {
-            isSit = true;
-            collider.enabled = false;
-            childCollider.enabled = true;
 
-        }
-        else
-        {
-            isSit = false;
-            collider.enabled = true;
-            childCollider.enabled = false;
-        }
+            if (Input.GetKey(KeyCode.S))
+            {
+                isSit = true;
+                collider.enabled = false;
+                childCollider.enabled = true;
+
+            }
+            else
+            {
+                isSit = false;
+                collider.enabled = true;
+                childCollider.enabled = false;
+            }
+
     }
 }

@@ -65,16 +65,24 @@ public class IngameUI : MonoBehaviour
             gameover_text_DeathCountTotal.text = GameManager.Instance.deathCountTotal.ToString();
             gameover_text_DeathCountStage.text = GameManager.Instance.deathCountStage.ToString();
             tryCountManange();
-            OptionSelect(GameOverInt, gameOverOption, 2);
+            OptionSelect(2, gameOverInt, gameOverOption, 2);
             if (Input.GetKeyDown(KeyCode.Return))
             {
                 GameManager.Instance.isGameOver = false;
                 gameOver.gameObject.SetActive(false);
                 Time.timeScale = 1;
-                if (gameOverInt == 1)
-                    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-                else if (gameOverInt == 2)
-                    SceneManager.LoadScene("Menu");
+                switch(gameOverInt)
+                {
+                    case 1:
+                        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                        break;
+                    case 2:
+                        SceneManager.LoadScene("Menu");
+                        break;
+
+                }
+
+                    
             }
         }
     }
@@ -86,24 +94,29 @@ public class IngameUI : MonoBehaviour
         {
             Time.timeScale = 0;
             paused.gameObject.SetActive(true);
-            OptionSelect(PauseInt, pauseOption, 4);
+            
+            OptionSelect(1, PauseInt, pauseOption, 4);
             if(Input.GetKeyDown(KeyCode.Return) && pauseInt!=4)
             {
                 GameManager.Instance.isPaused = false;
-                if (pauseInt == 2) SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-                else if (pauseInt == 3)
+                switch(pauseInt)
                 {
-                    GameManager.Instance.SaveJason();
-                    SceneManager.LoadScene("Menu");
-                    
-                }      
+                    case 2:
+                        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                        break;
+                    case 3:
+                        GameManager.Instance.SaveJason();
+                        SceneManager.LoadScene("Menu");
+                        break;
+
+                }     
             }
    
         }
         else
         {
             GameManager.Instance.isPaused = false;
-            Time.timeScale = 1;
+            if(!GameManager.Instance.isDead) Time.timeScale = 1;
             paused.gameObject.SetActive(false);
 
         }
@@ -111,21 +124,34 @@ public class IngameUI : MonoBehaviour
     }
 
 
-    public void OptionSelect(int option, Image[] optionBox,  int limitnum)
+    public void OptionSelect(int caseNum, int option, Image[] optionBox,  int limitnum)
     {
-        if (Input.GetKeyDown(KeyCode.DownArrow))
+        if (Input.GetKeyDown(KeyCode.DownArrow) && option <limitnum)
         {
-            Debug.Log("아래화살표");
-            if (option < limitnum)
-            { 
-                option++;
-                PauseInt++;
-                Debug.Log("option : " + option+ ", pausenum : "+pauseInt); 
+            option++;
+            switch (caseNum)
+            {
+                case 1:
+                    PauseInt = option; break;
+                case 2:
+                    GameOverInt = option; break;
             }
+
         }
 
-        else if (Input.GetKeyDown(KeyCode.UpArrow))
-        { if (option > 1) option--; }
+        else if (Input.GetKeyDown(KeyCode.UpArrow) && option>1)
+        { 
+           option--;
+           switch (caseNum)
+           {
+               case 1:
+                   PauseInt = option; break;
+               case 2:
+                   GameOverInt = option; break;
+           }
+   
+        }
+
 
         for (int i = 0; i < optionBox.Length; i++)
             optionBox[i].gameObject.SetActive(false);
@@ -134,27 +160,7 @@ public class IngameUI : MonoBehaviour
 
 
     }
-    //public string Timer(float timeNow, int[] nTimeText, string[] sTimeText)
-    //{
 
-
-    //    nTimeText[0] = (int)Mathf.Round((int)timeNow / 3600);
-    //    nTimeText[1] = (int)Mathf.Round((int)timeNow / 60 % 60);  //60이상으로 넘어가면 안되니까 60으로 한번 더 계산
-    //    nTimeText[2] = (int)Mathf.Round((int)timeNow % 60);
-
-    //    for (int i = 0; i < nTimeText.Length; i++)
-    //    {
-    //        if (nTimeText[i] < 1) sTimeText[i] = "00";
-    //        else if (nTimeText[i] >= 1 && nTimeText[i] < 10)
-    //            sTimeText[i] = "0" + nTimeText[i].ToString();
-    //        else if (nTimeText[i] >= 10)
-    //            sTimeText[i] = nTimeText[i].ToString();
-    //    }
-        
-    //    return sTimeText[0] + "  " + sTimeText[1] + "  " + sTimeText[2];
-        
-       
-    //}
     
     public void UpdateTimer(string timeStage, string timeTotal)
     {

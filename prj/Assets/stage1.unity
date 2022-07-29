@@ -4876,7 +4876,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &620898018
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5652,7 +5652,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: -2
   m_Sprite: {fileID: 6269212153625734030, guid: 03c1c897044c1b14e82a7a67356c485f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.8235294}
   m_FlipX: 0
@@ -8341,6 +8341,8 @@ MonoBehaviour:
   gameover_text_DeathCountTotal: {fileID: 930891374}
   gameover_text_DeathCountStage: {fileID: 1136920282}
   paused: {fileID: 778890622}
+  gameOverInt: 1
+  pauseInt: 1
   gameOverOption:
   - {fileID: 1641634744}
   - {fileID: 1824934723}
@@ -10147,7 +10149,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: -2
   m_Sprite: {fileID: 6269212153625734030, guid: 03c1c897044c1b14e82a7a67356c485f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.8235294}
   m_FlipX: 0
@@ -10714,7 +10716,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: -2
   m_Sprite: {fileID: 6269212153625734030, guid: 03c1c897044c1b14e82a7a67356c485f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.8235294}
   m_FlipX: 0
@@ -15400,6 +15402,7 @@ MonoBehaviour:
   - 
   isGameOver: 0
   isPaused: 0
+  isDead: 0
 --- !u!4 &2117082464
 Transform:
   m_ObjectHideFlags: 0

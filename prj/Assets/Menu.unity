@@ -1046,6 +1046,11 @@ MonoBehaviour:
   totalDeath: {fileID: 1190634581}
   savePoint: {fileID: 705750285}
   totalTime: {fileID: 886366635}
+  bestSavePoint: {fileID: 1233801784}
+  recordIcon:
+  - {fileID: 23746228}
+  - {fileID: 544389713}
+  - {fileID: 246117930}
 --- !u!1 &336623850
 GameObject:
   m_ObjectHideFlags: 0
@@ -3364,6 +3369,9 @@ MonoBehaviour:
   - 
   - 
   - 
+  isGameOver: 0
+  isPaused: 0
+  isDead: 0
 --- !u!4 &1401038431
 Transform:
   m_ObjectHideFlags: 0

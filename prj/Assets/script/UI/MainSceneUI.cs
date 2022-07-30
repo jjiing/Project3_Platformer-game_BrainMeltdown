@@ -14,13 +14,14 @@ public class MainSceneUI : MonoBehaviour
     private void Start()
     {
         check = 1;
-        AudioManager.Instance.PlaySE("mainBGM",0);
+        if(AudioManager.Instance.audioSources[constant.BACKGROUND_AUDIO_SOURCE].clip ==null)
+            AudioManager.Instance.PlaySE("mainBGM", constant.BACKGROUND_AUDIO_SOURCE);
 
     }
 
     private void Update()
     {
-        MainManage();   //키보드로 checknum관리
+        MainManage();           //키보드로 checknum관리
         CheckImangeOn(check);   //버튼유아이 활성화관리
         ButtonManage(check);    //실제동작
     }
@@ -29,13 +30,13 @@ public class MainSceneUI : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.DownArrow))
         { 
             if (check < 4) check++;
-            //playSE(audio[0]);
+            AudioManager.Instance.PlaySE("button", constant.EFFECT_AUDIO_SOURCE);
         }
 
         else if (Input.GetKeyDown(KeyCode.UpArrow))
         { 
             if (check > 1) check--;
-            //playSE(audio[0]);
+            AudioManager.Instance.PlaySE("button", constant.EFFECT_AUDIO_SOURCE);
         }
 
     }
@@ -53,8 +54,8 @@ public class MainSceneUI : MonoBehaviour
             switch(num)
             {
                 case 1:
-                    //playSE(audio[1]);
-                    StartCoroutine(MenuSceneCo());
+                    AudioManager.Instance.PlaySE("click", constant.EFFECT_AUDIO_SOURCE);
+                    SceneManager.LoadScene("Menu");
                     break;
                 case 2:
                     ExitGame();
@@ -76,10 +77,6 @@ public class MainSceneUI : MonoBehaviour
     }
 
     
-    IEnumerator MenuSceneCo()
-    {
-        yield return new WaitForSeconds(0.1f);
-        SceneManager.LoadScene("Menu");
-    }
+
 
 }

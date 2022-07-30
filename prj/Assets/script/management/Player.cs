@@ -20,7 +20,7 @@ public abstract class Player : MonoBehaviour
    
 
     protected bool isSit;
-    protected bool isRun;
+    public bool isRun;
     protected bool isUp;
     public bool isDown;
     public bool isGrounded;
@@ -55,11 +55,10 @@ public abstract class Player : MonoBehaviour
         collider = GetComponent<CapsuleCollider2D>();
         childCollider = transform.GetChild(0).gameObject.GetComponent<CapsuleCollider2D>();
 
-        dieEffect = transform.GetChild(1).gameObject;
-        dieEffectSR = dieEffect.GetComponent<SpriteRenderer>();
+        
         dieEffectAnim = dieEffect.GetComponent<Animator>();
 
-        //landingEffect = transform.GetChild(2).gameObject;
+
         
 
         speed = 8;
@@ -72,13 +71,6 @@ public abstract class Player : MonoBehaviour
         isDown = false;
         isGrounded = true;
 
-
-
-
-        //Color color = spriteRenderer.color;
-        //color.a = 1;
-        //spriteRenderer.color = color;
-        //collider.enabled = true;
 
 
         currentSavePoint = GameObject.Find("savePoint" + GameManager.Instance.savePointNow.ToString());
@@ -101,7 +93,7 @@ public abstract class Player : MonoBehaviour
 
     protected void MoveAnim()
     {
-        if (!GameManager.Instance.isPaused)
+        if (!GameManager.Instance.isPaused && !GameManager.Instance.isClear)
         {
             animator.SetBool("isSit", isSit);
             if (!isUp && !isDown) animator.SetBool("isRun", isRun); //점프중에는 달리는 애니메이션X
@@ -114,20 +106,20 @@ public abstract class Player : MonoBehaviour
     protected abstract void Move();
     protected abstract void Jump();
     protected abstract void Sit();
+    protected abstract void DieEffectColor();
+    protected abstract void PlayLandingSound();
 
     protected void DieEffect()
     {
-        //Color color = spriteRenderer.color;
-        //color.a = 0;
-        //spriteRenderer.color = color;
-        //collider.enabled = false;
+
         var dieEffect_=Instantiate(dieEffect, transform.position, transform.rotation);
         dieEffect_.SetActive(true);
+        dieEffectSR = dieEffect_.GetComponent<SpriteRenderer>();
+        DieEffectColor();
         gameObject.SetActive(false);
         
-
-
     }
+
 
 
     protected void OnCollisionEnter2D(Collision2D collision)
@@ -147,25 +139,27 @@ public abstract class Player : MonoBehaviour
                 GameObject landingEffect = objectPool.UsePrefab();
                 landingEffect.transform.position = footPos.position;
                 StartCoroutine(GetBackPrefabCo(landingEffect));
+                PlayLandingSound();
             }
 
         }
     }
     
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Ground")
-        {
-            isGrounded = true;  //나뭇잎 위에서 점프를 위해 켜줌
-        }
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    if (collision.gameObject.tag == "Ground")
+    //    {
+    //        isGrounded = true;  //나뭇잎 위에서 점프를 위해 켜줌
+    //    }
 
        
-    }
+    //}
     private void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Ground")
         {
             isGrounded = false;
+            
            
         }
     }

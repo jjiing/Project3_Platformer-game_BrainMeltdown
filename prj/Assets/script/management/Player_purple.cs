@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player_purple : Player
 {
@@ -11,7 +12,7 @@ public class Player_purple : Player
         
         gameObject.transform.position = currentSavePointPos + new Vector3(-1, 0.5f, 0);
 
-        dieEffectSR.color = colorDic["purple"];
+
     }
     
     void Update()
@@ -40,7 +41,7 @@ public class Player_purple : Player
         else rigid2d.constraints = RigidbodyConstraints2D.FreezeRotation;
 
         //anim 좌우방향설정
-        if (!GameManager.Instance.isPaused)
+        if (!GameManager.Instance.isPaused && !GameManager.Instance.isClear)
         {
             if (moveX < 0) spriteRenderer.flipX = false;
             else if (moveX > 0) spriteRenderer.flipX = true;
@@ -51,6 +52,16 @@ public class Player_purple : Player
         if (moveX != 0) isRun = true;
         else isRun = false;
 
+        //사운드
+        if (isRun && !AudioManager.Instance.audioSources[constant.PLAYER_P_AUDIO_SOURCE].isPlaying)
+        {
+            if(SceneManager.GetActiveScene().name == "stage1")
+                AudioManager.Instance.PlaySE("s1Footstep", constant.PLAYER_P_AUDIO_SOURCE);
+            else if(SceneManager.GetActiveScene().name == "stage2")
+                AudioManager.Instance.PlaySE("s2Footstep", constant.PLAYER_P_AUDIO_SOURCE);
+
+        }
+        
     }
     protected override void Jump()
     {
@@ -81,5 +92,20 @@ public class Player_purple : Player
                 childCollider.enabled = false;
             }
 
+    }
+    protected override void DieEffectColor()
+    {
+
+        dieEffectSR.color = colorDic["purple"];
+    }
+    protected override void PlayLandingSound()
+    {
+
+        
+            if (SceneManager.GetActiveScene().name == "stage1")
+                AudioManager.Instance.PlaySE("s1Landing", constant.PLAYER_P_AUDIO_SOURCE);
+            else if (SceneManager.GetActiveScene().name == "stage2")
+                AudioManager.Instance.PlaySE("s2Landing", constant.PLAYER_P_AUDIO_SOURCE);
+        
     }
 }

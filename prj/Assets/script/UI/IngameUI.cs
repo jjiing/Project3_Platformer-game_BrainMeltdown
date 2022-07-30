@@ -29,10 +29,11 @@ public class IngameUI : MonoBehaviour
 
     public int gameOverInt=1;
     public int pauseInt=1;
-    public int GameOverInt { get { return gameOverInt; }  set { gameOverInt= value;} }
-    public int PauseInt { get { return pauseInt; } set { pauseInt= value;} }
+
+   
     public Image[] gameOverOption = new Image[2];
     public Image[] pauseOption = new Image[4];
+
 
 
 
@@ -59,6 +60,7 @@ public class IngameUI : MonoBehaviour
         if (GameManager.Instance.isGameOver)
         {
 
+            Time.timeScale = 0;
             gameOver.gameObject.SetActive(true);
             gameover_text_Timer_Total.text = sTime_total;
             gameover_text_Timer_Stage.text = sTime;
@@ -68,6 +70,7 @@ public class IngameUI : MonoBehaviour
             OptionSelect(2, gameOverInt, gameOverOption, 2);
             if (Input.GetKeyDown(KeyCode.Return))
             {
+                GameManager.Instance.isDead = false;
                 GameManager.Instance.isGameOver = false;
                 gameOver.gameObject.SetActive(false);
                 Time.timeScale = 1;
@@ -95,7 +98,7 @@ public class IngameUI : MonoBehaviour
             Time.timeScale = 0;
             paused.gameObject.SetActive(true);
             
-            OptionSelect(1, PauseInt, pauseOption, 4);
+            OptionSelect(1, pauseInt, pauseOption, 4);
             if(Input.GetKeyDown(KeyCode.Return) && pauseInt!=4)
             {
                 GameManager.Instance.isPaused = false;
@@ -105,6 +108,7 @@ public class IngameUI : MonoBehaviour
                         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
                         break;
                     case 3:
+                       
                         GameManager.Instance.SaveJason();
                         SceneManager.LoadScene("Menu");
                         break;
@@ -116,7 +120,7 @@ public class IngameUI : MonoBehaviour
         else
         {
             GameManager.Instance.isPaused = false;
-            if(!GameManager.Instance.isDead) Time.timeScale = 1;
+            if(!GameManager.Instance.isDead && !GameManager.Instance.isClear) Time.timeScale = 1;
             paused.gameObject.SetActive(false);
 
         }
@@ -132,9 +136,10 @@ public class IngameUI : MonoBehaviour
             switch (caseNum)
             {
                 case 1:
-                    PauseInt = option; break;
+                    pauseInt = option; break;
                 case 2:
-                    GameOverInt = option; break;
+                    gameOverInt = option; break;
+
             }
 
         }
@@ -145,10 +150,11 @@ public class IngameUI : MonoBehaviour
            switch (caseNum)
            {
                case 1:
-                   PauseInt = option; break;
+                   pauseInt = option; break;
                case 2:
-                   GameOverInt = option; break;
-           }
+                   gameOverInt = option; break;
+
+            }
    
         }
 

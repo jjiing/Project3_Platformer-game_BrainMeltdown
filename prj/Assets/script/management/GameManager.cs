@@ -21,6 +21,7 @@ public class GameManager : Singleton<GameManager>
     public bool isGameOver;
     public bool isPaused;
     public bool isDead;
+    public bool isClear;
 
 
     public void Awake()
@@ -34,6 +35,7 @@ public class GameManager : Singleton<GameManager>
         isGameOver = false;
         isPaused = false;
         isDead = false;
+        isClear = false;
 
     }
     private void Update()
@@ -47,10 +49,11 @@ public class GameManager : Singleton<GameManager>
     }
     IEnumerator GameOverCo()
     {
-        
+        AudioManager.Instance.StopSE(constant.BACKGROUND_AUDIO_SOURCE);
+        AudioManager.Instance.PlaySE("gameOver", constant.EFFECT_AUDIO_SOURCE);
         deathCountStage++;
         deathCountTotal++;
-        Time.timeScale = 0;
+        
         yield return new WaitForSecondsRealtime(0.5f);
         isGameOver = true;
         SaveJason();

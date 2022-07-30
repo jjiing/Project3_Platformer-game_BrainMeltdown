@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player_yellow : Player
 {
@@ -11,7 +12,6 @@ public class Player_yellow : Player
 
         
         gameObject.transform.position = currentSavePointPos + new Vector3(1, 0.5f, 0);
-        dieEffectSR.color = colorDic["yellow"];
 
 
     }
@@ -28,8 +28,8 @@ public class Player_yellow : Player
          //상속
          StateUpDown();
          MoveAnim();
-        
-    
+
+
     }
 
   
@@ -46,23 +46,36 @@ public class Player_yellow : Player
         else rigid2d.constraints = RigidbodyConstraints2D.FreezeRotation;
 
         //anim 좌우방향설정
-        if (!GameManager.Instance.isPaused)
+        if (!GameManager.Instance.isPaused && !GameManager.Instance.isClear)
         {
             if (moveX < 0) spriteRenderer.flipX = false;
             else if (moveX > 0) spriteRenderer.flipX = true;
         }
 
+        
 
         //상태 설정
-        if (moveX != 0) isRun = true;
+        if (moveX != 0)  isRun = true; 
         else isRun = false;
+        
+        //사운드
+        if (isRun && !AudioManager.Instance.audioSources[constant.PLAYER_Y_AUDIO_SOURCE].isPlaying)
+        {
+            if (SceneManager.GetActiveScene().name == "stage1")
+                AudioManager.Instance.PlaySE("s1Footstep", constant.PLAYER_Y_AUDIO_SOURCE);
+            else if (SceneManager.GetActiveScene().name == "stage2")
+                AudioManager.Instance.PlaySE("s2Footstep", constant.PLAYER_Y_AUDIO_SOURCE);
+
+        }
+
 
     }
+    
     protected override void Jump() 
     {
         if (Input.GetKeyDown(KeyCode.UpArrow) && isGrounded)
         {
-            //isGrounded = false;
+
             rigid2d.velocity = Vector2.up * jumpForce;
 
         }
@@ -88,5 +101,20 @@ public class Player_yellow : Player
             }
 
     }
-    
+    protected override void DieEffectColor()
+    {
+        
+        dieEffectSR.color = colorDic["yellow"];
+    }
+    protected override void PlayLandingSound()
+    {
+
+        
+            if (SceneManager.GetActiveScene().name == "stage1")
+                AudioManager.Instance.PlaySE("s1Landing", constant.PLAYER_Y_AUDIO_SOURCE);
+            else if (SceneManager.GetActiveScene().name == "stage2")
+                AudioManager.Instance.PlaySE("s2Landing", constant.PLAYER_Y_AUDIO_SOURCE);
+        
+    }
+
 }

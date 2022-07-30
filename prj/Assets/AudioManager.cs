@@ -27,23 +27,26 @@ public class AudioManager : Singleton<AudioManager>
         }
     }
 
-    //audioSourceNum 
-    // BGM : 1
-    // Effect : 2
-    // yellow : 3
-    // purple : 4
+
     public void PlaySE(string _name, int audioSourceNum)
     {
         for(int i = 0;i< soundClass.Length;i++)
         {
             if(_name == soundClass[i].name)
             {
-                audioSources[audioSourceNum-1].clip = soundClass[i].clip;
-                audioSources[audioSourceNum-1].Play();
+                audioSources[audioSourceNum].clip = soundClass[i].clip;
+                audioSources[audioSourceNum].Play();
 
+                    
             }
         }
     }
+    public void StopSE(int audioSourceNum)
+    {
+         audioSources[audioSourceNum].Stop();
+    }
 
-  
+   
+    
+
 }

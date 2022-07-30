@@ -84,7 +84,10 @@ public class DataSave : MonoBehaviour
             string reformat = System.Text.Encoding.UTF8.GetString(bytes);
             data = JsonUtility.FromJson<Data>(reformat);
             totalDeath.text = data.deathCountTotal.ToString();
-            savePoint.text = data.savePoint.ToString();
+            if (data.savePoint != 8)
+                savePoint.text = data.savePoint.ToString();
+            else
+                savePoint.text = "CLEAR";
             totalTime.text = GameManager.Instance.Timer(data.timeTotal);
         }
         else

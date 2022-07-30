@@ -22,6 +22,8 @@ public class MenuUI : MonoBehaviour
 
     private void Start()
     {
+        if (AudioManager.Instance.audioSources[constant.BACKGROUND_AUDIO_SOURCE].clip.name != "MAINBGM")
+            AudioManager.Instance.PlaySE("mainBGM", constant.BACKGROUND_AUDIO_SOURCE);
         dataNum = 1;
         box1active = true;
 
@@ -38,11 +40,20 @@ public class MenuUI : MonoBehaviour
     {
         if (box1active)
         {
-            if (Input.GetKeyDown(KeyCode.DownArrow) && dataNum<3)
+            if (Input.GetKeyDown(KeyCode.DownArrow) && dataNum < 3)
+            {
                 dataNum++;
-
-            else if (Input.GetKeyDown(KeyCode.UpArrow) && dataNum>1)
-                dataNum--; 
+                AudioManager.Instance.PlaySE("button", constant.EFFECT_AUDIO_SOURCE);
+            }
+            else if (Input.GetKeyDown(KeyCode.UpArrow) && dataNum > 1)
+            {
+                dataNum--;
+                AudioManager.Instance.PlaySE("button", constant.EFFECT_AUDIO_SOURCE);
+            }
+        }
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene("Main");
         }
 
     }
@@ -65,6 +76,7 @@ public class MenuUI : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.Return))
                 {
+                    AudioManager.Instance.PlaySE("gameStartClick", constant.EFFECT_AUDIO_SOURCE);
                     dataSaveScript.GiveGameManagerInfo(dataNum);
                     if (GameManager.Instance.savePointNow < 4)
                         SceneManager.LoadScene("stage1");
@@ -75,11 +87,16 @@ public class MenuUI : MonoBehaviour
             }
             else
             {
-                if (Input.GetKeyDown(KeyCode.Return)) box2active(true);
+                if (Input.GetKeyDown(KeyCode.Return))
+                {
+                    AudioManager.Instance.PlaySE("click", constant.EFFECT_AUDIO_SOURCE);
+                    box2active(true);
+                }
 
             }
             if(Input.GetKeyDown(KeyCode.Delete))
             {
+                AudioManager.Instance.PlaySE("click", constant.EFFECT_AUDIO_SOURCE);
                 dataSaveScript.DestroyData(dataNum);
             }
         }
@@ -87,6 +104,7 @@ public class MenuUI : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Return))
             {
+                AudioManager.Instance.PlaySE("gameStartClick", constant.EFFECT_AUDIO_SOURCE);
                 dataSaveScript.JsonSave(dataNum);
                 dataSaveScript.GiveGameManagerInfo(dataNum);
                 GameManager.Instance.dataNum = dataNum;
@@ -94,6 +112,7 @@ public class MenuUI : MonoBehaviour
             }
             else if (Input.GetKeyDown(KeyCode.Escape))
             {
+                AudioManager.Instance.PlaySE("click", constant.EFFECT_AUDIO_SOURCE);
                 box2active(false);
             }
         }

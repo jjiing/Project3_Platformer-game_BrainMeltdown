@@ -64,17 +64,18 @@
     <Compile Include="Assets\script\stage1\Rotate.cs" />
     <Compile Include="Assets\script\stage2\PlayerOnCheckChild.cs" />
     <Compile Include="Assets\script\stage2\LandMoveUpStg2.cs" />
-    <Compile Include="Assets\AudioManager.cs" />
+    <Compile Include="Assets\script\management\AudioManager.cs" />
     <Compile Include="Assets\script\stage2\RotateObstacle.cs" />
     <Compile Include="Assets\script\management\Singleton.cs" />
     <Compile Include="Assets\script\UI\IngameUI_stg1.cs" />
     <Compile Include="Assets\script\Monster\Bug_CollisionMove.cs" />
     <Compile Include="Assets\script\management\InterfaceManager.cs" />
-    <Compile Include="Assets\constant.cs" />
+    <Compile Include="Assets\script\management\constant.cs" />
     <Compile Include="Assets\script\management\Player.cs" />
     <Compile Include="Assets\script\management\clearPoint1.cs" />
     <Compile Include="Assets\script\UI\MainSceneUI.cs" />
     <Compile Include="Assets\script\Monster\Bug_AutoMove.cs" />
+    <Compile Include="Assets\script\management\clearPoint2.cs" />
     <Compile Include="Assets\script\stage1\LandMoveRight.cs" />
     <Compile Include="Assets\script\UI\IngameUI_stg2.cs" />
     <Compile Include="Assets\script\stage2\ProjectiveObstacle.cs" />
@@ -93,7 +94,6 @@
     <Compile Include="Assets\script\stage1\Lever.cs" />
     <Compile Include="Assets\script\UI\MenuUI.cs" />
     <Compile Include="Assets\script\management\DataSave.cs" />
-    <Compile Include="Assets\script\management\clearPoint2.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\JsonDotNet\link.xml" />

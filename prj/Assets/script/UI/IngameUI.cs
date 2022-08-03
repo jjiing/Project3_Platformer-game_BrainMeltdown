@@ -34,7 +34,7 @@ public class IngameUI : MonoBehaviour
     public Image[] gameOverOption = new Image[2];
     public Image[] pauseOption = new Image[4];
 
-
+    public Slider sound;
 
 
     protected void tryCountManange()
@@ -70,6 +70,7 @@ public class IngameUI : MonoBehaviour
             OptionSelect(2, gameOverInt, gameOverOption, 2);
             if (Input.GetKeyDown(KeyCode.Return))
             {
+                AudioManager.Instance.PlaySE("click", constant.EFFECT_AUDIO_SOURCE);
                 GameManager.Instance.isDead = false;
                 GameManager.Instance.isGameOver = false;
                 gameOver.gameObject.SetActive(false);
@@ -101,6 +102,7 @@ public class IngameUI : MonoBehaviour
             OptionSelect(1, pauseInt, pauseOption, 4);
             if(Input.GetKeyDown(KeyCode.Return) && pauseInt!=4)
             {
+                AudioManager.Instance.PlaySE("click", constant.EFFECT_AUDIO_SOURCE);
                 GameManager.Instance.isPaused = false;
                 switch(pauseInt)
                 {
@@ -114,6 +116,14 @@ public class IngameUI : MonoBehaviour
                         break;
 
                 }     
+            }
+            if(pauseInt ==4)
+            {
+                if (Input.GetKeyDown(KeyCode.RightArrow))
+                    sound.value += 0.1f;
+                else if (Input.GetKeyDown(KeyCode.LeftArrow))
+                    sound.value -= 0.1f;
+                AudioManager.Instance.volume = sound.value;
             }
    
         }
@@ -133,6 +143,7 @@ public class IngameUI : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.DownArrow) && option <limitnum)
         {
             option++;
+            AudioManager.Instance.PlaySE("button", constant.EFFECT_AUDIO_SOURCE);
             switch (caseNum)
             {
                 case 1:
@@ -147,7 +158,8 @@ public class IngameUI : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.UpArrow) && option>1)
         { 
            option--;
-           switch (caseNum)
+            AudioManager.Instance.PlaySE("button", constant.EFFECT_AUDIO_SOURCE);
+            switch (caseNum)
            {
                case 1:
                    pauseInt = option; break;

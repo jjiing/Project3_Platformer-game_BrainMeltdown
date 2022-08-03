@@ -9,6 +9,7 @@ public class MainSceneUI : MonoBehaviour
     int check;
 
     public Image[] checkImage = new Image[4];
+    public Slider sound;
    
 
     private void Start()
@@ -49,22 +50,22 @@ public class MainSceneUI : MonoBehaviour
     }
     private void ButtonManage(int num)
     {
-        if (Input.GetKeyDown(KeyCode.Return))
-        { 
-            switch(num)
-            {
-                case 1:
+        switch (num)
+        {
+            case 1:
+                if (Input.GetKeyDown(KeyCode.Return))
+                {
                     AudioManager.Instance.PlaySE("click", constant.EFFECT_AUDIO_SOURCE);
                     SceneManager.LoadScene("Menu");
-                    break;
-                case 2:
+                }
+                break;
+            case 2:
+                if (Input.GetKeyDown(KeyCode.Return))
                     ExitGame();
-                    break;
-                case 3:
-                    //사운드 관리
-                    break;
-            }
-            
+                break;
+            case 3:
+                SoundControl();
+                break;
         }
     }    
     private void ExitGame()
@@ -74,6 +75,15 @@ public class MainSceneUI : MonoBehaviour
 #else
         Application.Quit(); // 어플리케이션 종료
 #endif
+    }
+    private void SoundControl()
+    {
+        
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+            sound.value += 0.1f;
+        else if (Input.GetKeyDown(KeyCode.LeftArrow))
+            sound.value -= 0.1f;
+        AudioManager.Instance.volume = sound.value;
     }
 
     

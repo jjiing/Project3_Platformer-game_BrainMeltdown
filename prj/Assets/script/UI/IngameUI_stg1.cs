@@ -7,6 +7,7 @@ public class IngameUI_stg1 : IngameUI
 {
     private void Start()
     {
+        sound.value = AudioManager.Instance.volume;
         AudioManager.Instance.PlaySE("s1BGM", constant.BACKGROUND_AUDIO_SOURCE);
         tryCountManange();
     }

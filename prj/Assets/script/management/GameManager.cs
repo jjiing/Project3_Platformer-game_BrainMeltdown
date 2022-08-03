@@ -36,11 +36,12 @@ public class GameManager : Singleton<GameManager>
         isPaused = false;
         isDead = false;
         isClear = false;
+        
 
     }
     private void Update()
     {
-
+        
 
     }
     public void GameOver()

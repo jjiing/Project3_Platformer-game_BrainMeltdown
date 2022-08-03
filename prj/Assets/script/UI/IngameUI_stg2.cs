@@ -18,7 +18,7 @@ public class IngameUI_stg2 : IngameUI
 
     private void Start()
     {
-        
+        sound.value = AudioManager.Instance.volume;
         GameManager.Instance.timeNow = 0;
         GameManager.Instance.time_total = Mathf.Round(GameManager.Instance.time_total);
         AudioManager.Instance.PlaySE("s2BGM", constant.BACKGROUND_AUDIO_SOURCE);

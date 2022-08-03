@@ -20,11 +20,12 @@ public class savePoint : MonoBehaviour
     {
         if(collision.gameObject.tag == "Player")
         {
-            if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime == 0)
-                AudioManager.Instance.PlaySE("savePoint", constant.EFFECT_AUDIO_SOURCE);
-            anim.SetTrigger("isArrived");
             //현재 세이브 포인트보다 커야 새로운 세이브포트로 갱신
             int savePointNum = int.Parse(gameObject.name.Substring(9));
+            if (GameManager.Instance.savePointNow<savePointNum)
+                AudioManager.Instance.PlaySE("savePoint", constant.EFFECT_AUDIO_SOURCE);
+            anim.SetTrigger("isArrived");
+            
             if(savePointNum > GameManager.Instance.savePointNow)
                 GameManager.Instance.savePointNow = savePointNum;
         }

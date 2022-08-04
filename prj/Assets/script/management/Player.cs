@@ -5,23 +5,23 @@ using UnityEngine.SceneManagement;
 
 public abstract class Player : MonoBehaviour
 {
-    
 
     [Header("State")]
-    protected float speed;
-    protected float jumpForce;
-    public bool isSit;
-    public bool isRun;
-    public bool isUp;
-    public bool isDown;
-    public bool isGrounded;
+    [SerializeField] private float speed;
+    [SerializeField] private float jumpForce;
+    protected bool isSit;
+    protected bool isRun;
+    protected bool isUp;
+    protected bool isDown;
+    protected bool isGrounded;
+
 
     [Header("Landing Effect")]
-    public ObjectPool objectPool;
-    public Transform footPos;
+    [SerializeField] ObjectPool objectPool;
+    [SerializeField] Transform footPos;
 
     [Header("Die Effect")]
-    public GameObject dieEffect;
+    [SerializeField] GameObject dieEffect;
     protected SpriteRenderer dieEffectSR;
     protected Animator dieEffectAnim;
     protected Dictionary<string, Color> colorDic;
@@ -32,6 +32,7 @@ public abstract class Player : MonoBehaviour
     protected Animator animator;
     protected CapsuleCollider2D collider;
     protected CapsuleCollider2D childCollider;
+
 
     //세이브포인트
     protected GameObject currentSavePoint;

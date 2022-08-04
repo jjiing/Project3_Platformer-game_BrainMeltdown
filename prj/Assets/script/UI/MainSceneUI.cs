@@ -7,10 +7,8 @@ using UnityEngine.UI;
 public class MainSceneUI : MonoBehaviour
 {
     int check;
-
     public Image[] checkImage = new Image[4];
     public Slider sound;
-   
 
     private void Start()
     {
@@ -33,13 +31,11 @@ public class MainSceneUI : MonoBehaviour
             if (check < 4) check++;
             AudioManager.Instance.PlaySE("button", constant.EFFECT_AUDIO_SOURCE);
         }
-
         else if (Input.GetKeyDown(KeyCode.UpArrow))
         { 
             if (check > 1) check--;
             AudioManager.Instance.PlaySE("button", constant.EFFECT_AUDIO_SOURCE);
         }
-
     }
     private void CheckImangeOn(int num)
     {
@@ -78,7 +74,6 @@ public class MainSceneUI : MonoBehaviour
     }
     private void SoundControl()
     {
-        
         if (Input.GetKeyDown(KeyCode.RightArrow))
             sound.value += 0.1f;
         else if (Input.GetKeyDown(KeyCode.LeftArrow))

@@ -9,15 +9,17 @@ using UnityEngine.SceneManagement;
 
 public class MenuUI : MonoBehaviour
 {
-    public bool box1active;
-    public bool[] dataExist = new bool[3];
-    public int dataNum;
-    public Image[] checkImage = new Image[3];
+    [Header("Data Save")]
     public DataSave dataSaveScript;
+    [SerializeField] int dataNum;
+    [SerializeField] bool box1active;
+    public bool[] dataExist = new bool[3];
 
-    public Image box1;
-    public Image box2;
-    public Image normalbox;
+    [Header("Activate button")]
+    [SerializeField] Image box1;
+    [SerializeField] Image box2;
+    [SerializeField] Image normalbox;
+    [SerializeField] Image[] checkImage = new Image[3];
 
 
     private void Start()

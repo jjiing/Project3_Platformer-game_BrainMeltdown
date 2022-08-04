@@ -8,6 +8,7 @@ using UnityEngine.UI;
 [System.Serializable]
 public class Data
 {
+
     public int dataNum;
     public int savePoint;
 
@@ -16,8 +17,6 @@ public class Data
 
     public float timeTotal;
     public float timeStage;
-
-
 
     public Data() { }
     public Data(int dataNum, int savePoint, int deathCountTotal, int deathCountStage, float timeTotal, float timeStage)
@@ -37,16 +36,15 @@ public class Data
 
 public class DataSave : MonoBehaviour
 {
+    
+    private string[] path = new string[3];
+    
+    [Header("UI")]
     public MenuUI uiScript;
-    public string[] path = new string[3];
-    public string path2;
-    public string path3;
-
     public Text totalDeath;
     public Text savePoint;
     public Text totalTime;
     public Text bestSavePoint;
-
     public Image[] recordIcon = new Image[3];
 
 

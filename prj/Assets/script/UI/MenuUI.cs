@@ -52,11 +52,14 @@ public class MenuUI : MonoBehaviour
                 dataNum--;
                 AudioManager.Instance.PlaySE("button", constant.EFFECT_AUDIO_SOURCE);
             }
+
+
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                SceneManager.LoadScene("Main");
+            }
         }
-        if(Input.GetKeyDown(KeyCode.Escape))
-        {
-            SceneManager.LoadScene("Main");
-        }
+        
 
     }
     private void ActivateDataboxImangeOn(int num)
@@ -70,7 +73,7 @@ public class MenuUI : MonoBehaviour
     private void DataManage()
     {
         
-        dataSaveScript.CheckDataExist(dataNum);
+        dataExist[dataNum-1] = dataSaveScript.CheckDataExist(dataNum);
         dataSaveScript.ShowDataRecord(dataNum);
         if (box1active)
         {

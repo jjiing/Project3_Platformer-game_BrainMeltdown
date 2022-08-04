@@ -58,39 +58,32 @@ public class DataSave : MonoBehaviour
         BestSavePoint();
     }
 
-    
-    void Update()
-    {
-        
-    }
+   
 
 
     public void ShowDataRecord(int num)
     {
+        //데이터 별 기록 보여주기
         Data data = new Data();
- 
+        data = JasonLoad(num-1,data);
+        totalDeath.text = data.deathCountTotal.ToString();
+        totalTime.text = GameManager.Instance.Timer(data.timeTotal);
+        if (data.savePoint != 8)
+            savePoint.text = data.savePoint.ToString();
+        else
+            savePoint.text = "CLEAR";
 
-        if (File.Exists(path[num-1]))
+
+        //기록 아이콘 이미지 관리
+        RecordIconManage(num);
+
+    }
+    protected void RecordIconManage(int num)
+    {
+        //데이터 없을 경우 아이콘 없애고 엠티 쓰기
+        if (!File.Exists(path[num - 1]))
         {
             for (int i = 0; i < recordIcon.Length; i++)
-            {
-                recordIcon[i].gameObject.SetActive(true);
-            }
-
-            string loadJson = File.ReadAllText(path[num - 1]);
-            byte[] bytes = System.Convert.FromBase64String(loadJson);
-            string reformat = System.Text.Encoding.UTF8.GetString(bytes);
-            data = JsonUtility.FromJson<Data>(reformat);
-            totalDeath.text = data.deathCountTotal.ToString();
-            if (data.savePoint != 8)
-                savePoint.text = data.savePoint.ToString();
-            else
-                savePoint.text = "CLEAR";
-            totalTime.text = GameManager.Instance.Timer(data.timeTotal);
-        }
-        else
-        {
-            for(int i = 0;i<recordIcon.Length;i++)
             {
                 recordIcon[i].gameObject.SetActive(false);
             }
@@ -98,24 +91,27 @@ public class DataSave : MonoBehaviour
             savePoint.text = "";
             totalTime.text = "EMPTY";
         }
+        else
+        {
+            for (int i = 0; i < recordIcon.Length; i++)
+            {
+                recordIcon[i].gameObject.SetActive(true);
 
+            }
+        }
     }
     public void GiveGameManagerInfo(int num)
     {
         Data data = new Data();
-        if (File.Exists(path[num - 1]))
-        {
-            string loadJson = File.ReadAllText(path[num - 1]);
-            byte[] bytes = System.Convert.FromBase64String(loadJson);
-            string reformat = System.Text.Encoding.UTF8.GetString(bytes);
-            data = JsonUtility.FromJson<Data>(reformat);
-            GameManager.Instance.dataNum = data.dataNum;
-            GameManager.Instance.savePointNow = data.savePoint;
-            GameManager.Instance.deathCountTotal = data.deathCountTotal;
-            GameManager.Instance.deathCountStage = data.deathCountStage;
-            GameManager.Instance.time_total = data.timeTotal;
-            GameManager.Instance.timeNow = data.timeStage;
-        }
+        data = JasonLoad(num - 1, data);
+        
+        GameManager.Instance.dataNum = data.dataNum;
+        GameManager.Instance.savePointNow = data.savePoint;
+        GameManager.Instance.deathCountTotal = data.deathCountTotal;
+        GameManager.Instance.deathCountStage = data.deathCountStage;
+        GameManager.Instance.time_total = data.timeTotal;
+        GameManager.Instance.timeNow = data.timeStage;
+        
     }
     //새 데이터 생성
     public void JsonSave(int num)   
@@ -134,11 +130,9 @@ public class DataSave : MonoBehaviour
     
 
     //데이터 존재하는지 체크
-    public void CheckDataExist(int num)
+    public bool CheckDataExist(int num)
     {
-
-        uiScript.dataExist[num - 1] = File.Exists(path[num - 1]) ? true: false;
-
+       return File.Exists(path[num - 1]) ? true: false;
     }
     
     public void DestroyData(int num)
@@ -152,20 +146,24 @@ public class DataSave : MonoBehaviour
         int BestSP=0;
         for(int i = 0;i<path.Length;i++)
         {
-            
-            if(File.Exists(path[i]))
-            {
-                Data data = new Data();
-                string loadJson = File.ReadAllText(path[i]);
-                byte[] bytes = System.Convert.FromBase64String(loadJson);
-                string reformat = System.Text.Encoding.UTF8.GetString(bytes);
-                data = JsonUtility.FromJson<Data>(reformat);
-                if (data.savePoint > BestSP)
-                    BestSP = data.savePoint;
-            }
+            Data data = new Data();
+            data = JasonLoad(i, data);
+            if (data.savePoint > BestSP)
+                BestSP = data.savePoint;
         }
         bestSavePoint.text = BestSP.ToString();
 
+    }
 
+    protected Data JasonLoad(int num, Data data)
+    {
+        if (File.Exists(path[num]))
+        {
+            string loadJson = File.ReadAllText(path[num]);
+            byte[] bytes = System.Convert.FromBase64String(loadJson);
+            string reformat = System.Text.Encoding.UTF8.GetString(bytes);
+            data = JsonUtility.FromJson<Data>(reformat);
+        }
+        return data;
     }
 }

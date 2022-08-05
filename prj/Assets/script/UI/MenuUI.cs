@@ -72,54 +72,71 @@ public class MenuUI : MonoBehaviour
 
     private void DataManage()
     {
-        
+        //데이터 있는지 체크 후 기록 보여주기
         dataExist[dataNum-1] = dataSaveScript.CheckDataExist(dataNum);
         dataSaveScript.ShowDataRecord(dataNum);
-        if (box1active)
+
+
+        
+        switch (box1active)
         {
-            if (dataExist[dataNum - 1])
-            {
+            //첫번째 창 활성화
+            case true:
+
+                //데이터 있을 경우
+                if (dataExist[dataNum - 1])
+                {
+                    //데이터 있을 때 게임 시작
+                    if (Input.GetKeyDown(KeyCode.Return))
+                    {
+                        AudioManager.Instance.PlaySE("gameStartClick", constant.EFFECT_AUDIO_SOURCE);
+                        dataSaveScript.GiveGameManagerInfo(dataNum);
+                        if (GameManager.Instance.savePointNow < 4)
+                            SceneManager.LoadScene("stage1");
+                        else
+                            SceneManager.LoadScene("stage2");
+                    }
+                    //데이터 삭제
+                    if (Input.GetKeyDown(KeyCode.Delete))
+                    {
+                        AudioManager.Instance.PlaySE("click", constant.EFFECT_AUDIO_SOURCE);
+                        dataSaveScript.DestroyData(dataNum);
+                    }
+
+                }
+                //데이터 없을 경우
+                else
+                {
+                    //데이터 없을경우 난이도 설정창으로
+                    if (Input.GetKeyDown(KeyCode.Return))
+                    {
+                        AudioManager.Instance.PlaySE("click", constant.EFFECT_AUDIO_SOURCE);
+                        box2active(true);
+                    }
+
+                }
+                break;
+
+
+            //두번째 창활성화
+            case false:
+                
+                //새로운 데이터로 시작
                 if (Input.GetKeyDown(KeyCode.Return))
                 {
                     AudioManager.Instance.PlaySE("gameStartClick", constant.EFFECT_AUDIO_SOURCE);
+                    dataSaveScript.JsonSave(dataNum);
                     dataSaveScript.GiveGameManagerInfo(dataNum);
-                    if (GameManager.Instance.savePointNow < 4)
-                        SceneManager.LoadScene("stage1");
-                    else
-                        SceneManager.LoadScene("stage2");
+                    GameManager.Instance.dataNum = dataNum;
+                    SceneManager.LoadScene("stage1");
                 }
-
-            }
-            else
-            {
-                if (Input.GetKeyDown(KeyCode.Return))
+                //다시 첫번째 창으로
+                else if (Input.GetKeyDown(KeyCode.Escape))
                 {
                     AudioManager.Instance.PlaySE("click", constant.EFFECT_AUDIO_SOURCE);
-                    box2active(true);
+                    box2active(false);
                 }
-
-            }
-            if(Input.GetKeyDown(KeyCode.Delete))
-            {
-                AudioManager.Instance.PlaySE("click", constant.EFFECT_AUDIO_SOURCE);
-                dataSaveScript.DestroyData(dataNum);
-            }
-        }
-        else
-        {
-            if (Input.GetKeyDown(KeyCode.Return))
-            {
-                AudioManager.Instance.PlaySE("gameStartClick", constant.EFFECT_AUDIO_SOURCE);
-                dataSaveScript.JsonSave(dataNum);
-                dataSaveScript.GiveGameManagerInfo(dataNum);
-                GameManager.Instance.dataNum = dataNum;
-                SceneManager.LoadScene("stage1");
-            }
-            else if (Input.GetKeyDown(KeyCode.Escape))
-            {
-                AudioManager.Instance.PlaySE("click", constant.EFFECT_AUDIO_SOURCE);
-                box2active(false);
-            }
+                break;
         }
     }
     private void box2active(bool bool_)

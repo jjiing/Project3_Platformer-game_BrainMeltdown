@@ -155,13 +155,16 @@ public class DataSave : MonoBehaviour
 
     }
 
-    protected Data JasonLoad(int num, Data data)
+    private Data JasonLoad(int num, Data data)
     {
         if (File.Exists(path[num]))
         {
             string loadJson = File.ReadAllText(path[num]);
+
+            //¾ÏÈ£È­
             byte[] bytes = System.Convert.FromBase64String(loadJson);
             string reformat = System.Text.Encoding.UTF8.GetString(bytes);
+
             data = JsonUtility.FromJson<Data>(reformat);
         }
         return data;

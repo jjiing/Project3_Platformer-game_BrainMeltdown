@@ -14,6 +14,7 @@ public abstract class Player : MonoBehaviour
     protected bool isUp;
     protected bool isDown;
     protected bool isGrounded;
+    private float stateUpDownNum;
 
 
     [Header("Landing Effect")]
@@ -58,6 +59,7 @@ public abstract class Player : MonoBehaviour
         //state 초기화
         speed = 8;
         jumpForce = 17;
+        stateUpDownNum = 1.5f;
 
         isSit = false;
         isRun = false;
@@ -82,8 +84,8 @@ public abstract class Player : MonoBehaviour
 
     protected void StateUpDown()
     {
-        if (rigid2d.velocity.y > 1.5) { isUp = true; isDown = false; }
-        else if (rigid2d.velocity.y < -1.5) { isUp = false; isDown = true; }
+        if (rigid2d.velocity.y > stateUpDownNum) { isUp = true; isDown = false; }
+        else if (rigid2d.velocity.y < -stateUpDownNum) { isUp = false; isDown = true; }
         else { isUp = false; isDown = false; }
     }
 
@@ -97,7 +99,7 @@ public abstract class Player : MonoBehaviour
     }
 
 
-    protected abstract void DieEffectColorSetting();
+   
     protected abstract void LandingSoundAudioSetting();
 
     
@@ -137,13 +139,16 @@ public abstract class Player : MonoBehaviour
     protected void DieEffect()
     {
 
-        var dieEffect_=Instantiate(dieEffect, transform.position, transform.rotation);
+        GameObject dieEffect_=Instantiate(dieEffect, transform.position, transform.rotation);
         dieEffect_.SetActive(true);
         dieEffectSR = dieEffect_.GetComponent<SpriteRenderer>();
-        DieEffectColorSetting();
+
+        DieEffectColorSetting(); //하위클래스별로 차이가 나는 부분
+
         gameObject.SetActive(false);
         
     }
+    protected abstract void DieEffectColorSetting();
 
     protected void Jump(bool key)
     {
@@ -195,6 +200,11 @@ public abstract class Player : MonoBehaviour
         LandingSoundAudioSetting();
         PlayLandingSound(audioNum);
     }
+
+
+
+
+
     private void PlayLandingSound(int audioSource)
     {
         if (SceneManager.GetActiveScene().name == "stage1")

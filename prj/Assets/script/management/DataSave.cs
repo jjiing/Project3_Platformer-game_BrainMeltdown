@@ -141,7 +141,7 @@ public class DataSave : MonoBehaviour
     }
 
 
-    private void BestSavePoint()
+    public void BestSavePoint()
     {
         int BestSP=0;
         for(int i = 0;i<path.Length;i++)

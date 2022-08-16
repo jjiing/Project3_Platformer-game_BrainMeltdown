@@ -125,7 +125,7 @@ public abstract class Player : MonoBehaviour
     protected void MoveSound(int audioSource)
     {
          if (isRun && !AudioManager.Instance.audioSources[audioSource].isPlaying
-          && !isSit)
+          && !isSit && isGrounded)
          {
              if (SceneManager.GetActiveScene().name == "stage1")
                  AudioManager.Instance.PlaySE("s1Footstep", audioSource);

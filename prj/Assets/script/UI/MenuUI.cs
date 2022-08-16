@@ -101,6 +101,7 @@ public class MenuUI : MonoBehaviour
                     {
                         AudioManager.Instance.PlaySE("click", constant.EFFECT_AUDIO_SOURCE);
                         dataSaveScript.DestroyData(dataNum);
+                        dataSaveScript.BestSavePoint();
                     }
 
                 }

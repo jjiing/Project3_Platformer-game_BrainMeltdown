@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Bug_AutoMove : MonoBehaviour, IMovePingpong
 {
+    
+    
     public float distance=3.8f;
 
     Vector3 pos;

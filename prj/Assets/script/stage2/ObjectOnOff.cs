@@ -5,18 +5,19 @@ using UnityEngine;
 public class ObjectOnOff : MonoBehaviour
 {
     
-    GameObject children0;
-    GameObject children1;
+    GameObject[] children = new GameObject[2];
+    
 
     public float time1 = 2f;
     public float time2 = 1f;
 
     private void Start()
     {
-        children0 = transform.GetChild(0).gameObject;
-        children1 = transform.GetChild(1).gameObject;
-        children0.SetActive(false);
-        children1.SetActive(false);
+        for (int i = 0; i < children.Length; i++)
+        {
+            children[i] = transform.GetChild(i).gameObject;
+            children[i].SetActive(false);
+        }
 
 
 
@@ -36,16 +37,16 @@ public class ObjectOnOff : MonoBehaviour
         while (true)
         {
             
-            children0.SetActive(true);
+            children[0].SetActive(true);
             yield return new WaitForSeconds(time1);
 
-            children1.SetActive(false);
+            children[1].SetActive(false);
             yield return new WaitForSeconds(time2);
 
-            children1.SetActive(true);
+            children[1].SetActive(true);
             yield return new WaitForSeconds(time1);
 
-            children0.SetActive(false);
+            children[0].SetActive(false);
             yield return new WaitForSeconds(time2);
 
 

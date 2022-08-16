@@ -58,68 +58,34 @@ public class LandMoveStage2 : MonoBehaviour, IMoveRight
         {
             int RandomNum = Random.Range(1,5);
             projectiveScript.wayNum = RandomNum;
-            StartCoroutine("AttackCo" + RandomNum.ToString());
+            if (RandomNum == 1) StartCoroutine(AttackCo(1, new Vector3(-15, 1.3f, 0), rowNotice, rowSR));
+            else if (RandomNum == 2) StartCoroutine(AttackCo(2, new Vector3(15, 1.3f, 0), rowNotice, rowSR));
+            else if (RandomNum == 3) StartCoroutine(AttackCo(3, new Vector3(1.5f, 10f, 0), columnNotice, columnSR));
+            else if (RandomNum == 4) StartCoroutine(AttackCo(4, new Vector3(0.5f, -10f, 0), columnNotice, columnSR));
+            
             yield return new WaitForSeconds(5.5f);
         }
        
 
 
     }
-
-    IEnumerator AttackCo1()
-    { 
-        rowNotice.SetActive(true);
-        StartCoroutine(FadeInOutCo(rowSR));
-        yield return new WaitForSeconds(1f);
-        rowNotice.SetActive(false);
-        
-        projective.SetActive(true);
-        projective.transform.position = gameObject.transform.position + new Vector3(-15, 1.3f,0);
-        yield return new WaitForSeconds(4f);
-        projective.SetActive(false);
-
-    }
-    IEnumerator AttackCo2()
+    IEnumerator AttackCo(int num, Vector3 pos, GameObject dir, SpriteRenderer dirSR)
     {
-        rowNotice.SetActive(true);
-        StartCoroutine(FadeInOutCo(rowSR));
+        dir.SetActive(true);
+        if(num ==3)
+            dir.transform.position = gameObject.transform.position + new Vector3(3, 0, 0);
+        else if (num ==4)
+            dir.transform.position = gameObject.transform.position + new Vector3(1.5f, 0, 0);
+        StartCoroutine(FadeInOutCo(dirSR));
         yield return new WaitForSeconds(1f);
-        rowNotice.SetActive(false);
-        
-        projective.SetActive(true);
-        projective.transform.position = gameObject.transform.position + new Vector3(15, 1.3f, 0);
-        yield return new WaitForSeconds(4f);
-        projective.SetActive(false);
-     
-    }
-    IEnumerator AttackCo3()
-    {
-        columnNotice.SetActive(true);
-        columnNotice.transform.position = gameObject.transform.position + new Vector3(3, 0, 0);
-        StartCoroutine(FadeInOutCo(columnSR));
-        yield return new WaitForSeconds(1f);
-        columnNotice.SetActive(false);
+        dir.SetActive(false);
 
         projective.SetActive(true);
-        projective.transform.position = gameObject.transform.position + new Vector3(1.5f, 10f, 0);
+        projective.transform.position = gameObject.transform.position + pos;
         yield return new WaitForSeconds(4f);
         projective.SetActive(false);
-
     }
-    IEnumerator AttackCo4()
-    {
-        columnNotice.SetActive(true);
-        columnNotice.transform.position = gameObject.transform.position + new Vector3(1.5f, 0, 0);
-        StartCoroutine(FadeInOutCo(columnSR));
-        yield return new WaitForSeconds(1f);
-        columnNotice.SetActive(false);
 
-        projective.SetActive(true);
-        projective.transform.position = gameObject.transform.position + new Vector3(0.5f, -10f, 0);
-        yield return new WaitForSeconds(4f);
-        projective.SetActive(false);
-
-    }
     IEnumerator FadeInOutCo(SpriteRenderer sr)
     {
         Color color = sr.color;

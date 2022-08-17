@@ -20,6 +20,6 @@
 ## 🔗 파일 및 링크
 + [개발일지](https://www.notion.so/53bd315168784dd28d24bbb461cab9b5)
 + [클래스다이어그램](https://drive.google.com/file/d/1P2hDZztmT419qXJeIICQz0kvNDglaV9I/view?pli=1)
-+ [최종 결과물 영상](https://www.youtube.com/watch?v=-OL-AU-SiaM)
++ [최종 결과물 영상](https://www.youtube.com/watch?v=ouzXpZxAbPI)
 
 </br></br>
